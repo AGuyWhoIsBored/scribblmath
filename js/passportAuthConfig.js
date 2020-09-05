@@ -8,10 +8,7 @@ function init(passport, getUserByEmail, getUserById)
     const authenticateUser = async (email, password, done) => 
     {
         let user = await getUserByEmail(email);
-        if (user == null)
-        {
-            return done(null, false, { message: "No user with that email exists!"});
-        }
+        if (user == null) { return done(null, false, { message: "No user with that email exists!"}); }
 
         try
         {
@@ -21,10 +18,7 @@ function init(passport, getUserByEmail, getUserById)
                 console.log("User [" + user.username + "] has successfully logged in");
                 return done(null, user);
             }
-            else
-            {
-                return done(null, false, { message: "Password incorrect!"});
-            }
+            else { return done(null, false, { message: "Password incorrect!"}); }
         }
         catch (e) { return done(e); /* something errored out internally, report */ }
     };

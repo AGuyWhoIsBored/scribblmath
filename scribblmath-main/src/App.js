@@ -17,6 +17,4 @@ function App() {
   )
 }
 
-/*<Route path="/login" component={About} />
-              <Route path="/createacc" component={Shop} />*/
 export default App;
