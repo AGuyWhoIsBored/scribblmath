@@ -1,0 +1,89 @@
+/*Font Imports*/
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+* {
+  font-family: "Open sans";
+}
+
+button:hover {
+  opacity: 70%;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  font-size: 150px;
+  color: #61DBFB;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.App-title {
+  font-weight: lighter;
+  font-size: 2.5em;
+  font-family: 'Luckiest Guy';
+  margin: 0px;
+}
+
+.login-button {
+  font-family: "Open sans";
+  font-weight: bold;
+  font-size: 15px;
+  color:white;
+  margin: 20px;
+  padding: 1em 3.5em;
+  border-radius: 8px;
+  border-color: lightblue;
+  background-color:  #61DBFB;
+}
+
+.create-account-option {
+  font-family: "Open sans";
+  font-size: 20px;
+}
+
+.arrow-scroll {
+  font-size: 50px;
+  padding: none;
+}
+
+.arrow-scroll:hover{
+  opacity: 70%;
+}
+
+.Description-section{
+  
+}
