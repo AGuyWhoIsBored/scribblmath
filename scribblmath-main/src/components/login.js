@@ -1,26 +1,27 @@
 import React from 'react';
-import logo from '../logo.svg';
+import createClass from 'create-react-class';
+import {Link} from 'react-router-dom';
 import './login.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+// get our fontawesome imports
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPencilRuler, faSortDown } from '@fortawesome/free-solid-svg-icons'
 
-export default App;
+var login = createClass ({
+  render: function () {
+      return (
+        <div className = "login-header">
+          <form>
+          <FontAwesomeIcon className="login-logo" icon={faPencilRuler} />
+            <label for="email"><b>Email</b></label>
+            <input type="text" placeholder="Enter email" name="email" required></input>
+            <label for="pass"><b>Password</b></label>
+            <input type="text" placeholder="Enter password" name="pass" required></input>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      );
+    }
+  });
+
+export default login;

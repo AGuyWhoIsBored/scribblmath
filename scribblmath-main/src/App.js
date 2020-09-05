@@ -10,6 +10,7 @@ function App() {
       <main>
           <Switch>
               <Route path="/" component={home} exact />
+              <Route path="/login" component={login} exact />
           </Switch>
       </main>
   )

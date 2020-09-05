@@ -7,7 +7,7 @@ import './home.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPencilRuler, faSortDown } from '@fortawesome/free-solid-svg-icons'
 
-var Home = createClass ({
+var home = createClass ({
 render: function () {
     return (
       <div className="App">
@@ -37,4 +37,4 @@ render: function () {
   }
 });
 
-export default Home;
+export default home;
