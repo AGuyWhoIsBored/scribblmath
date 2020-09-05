@@ -24,7 +24,7 @@ render: function () {
             Click here to log in
           </button></Link>
 
-          <div className = "create-account-option">Not a member? <Link to = "/signup">Create an account</Link> </div>
+          <div className = "create-account-option">Not a member? <Link to = "/signup" style={{ color: "blue"}}>Create an account</Link> </div>
           <br></br>
 
           <ScrollLink activeClass="active" to="Description-section" spy={true} smooth={true} offset={-70} duration={500}><FontAwesomeIcon className="arrow-scroll" icon={faSortDown}/></ScrollLink>
