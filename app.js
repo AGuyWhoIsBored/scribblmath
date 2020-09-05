@@ -28,7 +28,6 @@ console.log("Passport auth engine initialized");
 
 // configure express
 app.set('view-engine', 'ejs');
-//app.use(express.static('public')); // using express static
 app.use(express.static(__dirname + '/scribblmath-main/build')); // using react static
 app.use(bodyParser.json({ limit: '1mb' }));
 app.use(bodyParser.urlencoded({ limit: '1mb', extended: false }));
@@ -38,13 +37,7 @@ app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    name: 's'//,
-    // cookie:
-    // {
-    //     secure: false,
-    //     httpOnly: true,
-    //     sameSite: "strict"
-    // }
+    name: 's'
 }));
 
 app.use(passport.initialize());
@@ -58,17 +51,16 @@ mjAPI.start();
 
 // server-wide data
 var numUsers = 0;
-const ROOM_ID = 0;
+const ROOM_ID = "GLOBAL"; // global room ID - only one room for now
 var yourMath = 'E = mc^2';
 
 /* TOP-LEVEL ROUTES */ 
 
 // only have GET routes for two different CRA instances!
-//app.get('/', (req, res) => res.sendFile(__dirname + '/public/external.html'));
-//app.get('/main', checkAuthenticated, (req, res) => res.sendFile(__dirname + '/public/main.html'));
-
 // using only one CRA w/ route handler on frontend and prerendering
+// override router on login-protected pages to handle appropriately
 app.get('/main', checkAuthenticated, (req, res) => res.sendFile(__dirname + '/scribblmath-main/build/index.html'));
+app.get('/signup', checkNotAuthenticated, (req, res) => res.sendFile(__dirname + '/scribblmath-main/build/index.html'));
 app.get('/*', (req, res) => res.sendFile(__dirname + '/scribblmath-main/build/index.html'));
 
 
