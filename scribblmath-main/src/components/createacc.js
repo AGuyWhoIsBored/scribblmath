@@ -1,6 +1,5 @@
 import React from 'react';
 import createClass from 'create-react-class';
-import logo from '../logo.svg';
 import './createacc.css';
 
 

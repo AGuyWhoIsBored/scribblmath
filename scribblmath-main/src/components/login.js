@@ -12,22 +12,18 @@ var login = createClass ({
     return (
       <div className = "login-header">
         <form action="/login" method="POST">
-          <div className="login-logo"><FontAwesomeIcon icon={faPencilRuler} /></div>
-          <h1 className="login-title">Log in to ScribbleMath</h1>
-          <div>
-            <label for="email">
-              <div>Email
-
-              </div>
-            </label>
-            <input type="email" placeholder="Enter email" name="email" required></input>
-          </div>
-          
-          <div>
-            <label for="password"><b>Password</b></label>
-            <input type="password" placeholder="Enter password" name="password" required></input>
-          </div>
-          <button type="submit">Submit</button>
+          <div className="form-contents">
+            <div className="login-logo"><FontAwesomeIcon icon={faPencilRuler} /></div>
+            <div class="black-font login-title">Log in to ScribbleMath</div>
+            <div>
+              <input type="email" placeholder="Enter email" name="email" required></input>
+            </div>
+            
+            <div>
+              <input type="password" placeholder="Enter password" name="password" required></input>
+            </div>
+            <button type="submit" className="login-button">Submit</button>
+            </div>
         </form>
       </div>
     );
