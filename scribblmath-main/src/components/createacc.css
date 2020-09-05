@@ -1,3 +1,84 @@
 /*Font Imports*/
 @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+
+* {
+    font-family: "Open sans";
+  }
+  
+  button:hover {
+    opacity: 70%;
+  }
+  
+  /* Bordered form */
+
+  form {
+      display: inline-block;
+  }
+
+  input[type=email], input[type=password], input[type=text] {
+    width: 80%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  .form-contents {
+      background-color: white;
+      margin-left: auto;
+      margin-right: auto;
+      width: 400px;
+      height: 500px;
+      margin-top: 40px;
+  }
+  .App {
+    text-align: center;
+  }
+  
+  .signup-title {
+    font-weight: bold;
+    padding: 15px;
+  }
+    
+  .signup-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+
+  .signup-button {
+    font-family: "Open sans";
+    font-weight: bold;
+    font-size: 15px;
+    color:white;
+    margin: 20px;
+    padding: 1em 3.5em;
+    border-radius: 8px;
+    border-color: lightblue;
+    background-color:  #61DBFB;
+  }
+  
+  
+  .App-link {
+    color: #61dafb;
+  }
+  
+
+
+
+  /*Positioning and random styling*/
+
+  .black-font {
+      color: black;
+  }
+  
+  .spacing {
+      padding: 50px;
+  }

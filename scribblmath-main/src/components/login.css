@@ -39,6 +39,7 @@
   
   .login-title {
     font-weight: bold;
+    padding-bottom: 15px;
   }
 
   .login-logo {
@@ -46,7 +47,7 @@
     color: #61DBFB;
     pointer-events: none;
     text-align-last: center;
-    padding: 40px 30px 30px 30px;
+    padding: 40px 30px 10px 30px;
   }
     
   .login-header {
