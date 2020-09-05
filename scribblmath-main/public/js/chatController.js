@@ -40,8 +40,9 @@ $(function() {
   
     // Sets the client's username
     const setUsername = () => {
-      username = cleanInput($usernameInput.val().trim());
-  
+      //username = cleanInput($usernameInput.val().trim());
+      username = cleanInput($usernameInput.trim());
+
       // If the username is valid
       if (username) {
         $loginPage.fadeOut();
@@ -281,5 +282,8 @@ $(function() {
     socket.on('reconnect_error', () => {
       log('attempt to reconnect has failed');
     });
+
+    $usernameInput = "chad";
+    setUsername();
   
   });

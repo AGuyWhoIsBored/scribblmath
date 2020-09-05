@@ -61,8 +61,9 @@ var yourMath = 'E = mc^2';
 // override router on login-protected pages to handle appropriately
 app.get('/main', checkAuthenticated, (req, res) => res.sendFile(__dirname + '/scribblmath-main/build/index.html'));
 app.get('/signup', checkNotAuthenticated, (req, res) => res.sendFile(__dirname + '/scribblmath-main/build/index.html'));
-app.get('/*', (req, res) => res.sendFile(__dirname + '/scribblmath-main/build/index.html'));
 
+// MUST BE LAST!!
+app.get('/*', (req, res) => res.sendFile(__dirname + '/scribblmath-main/build/index.html'));
 
 app.get('/mjtest', (req, res) => 
 {

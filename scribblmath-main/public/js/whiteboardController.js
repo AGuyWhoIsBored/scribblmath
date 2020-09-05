@@ -100,8 +100,8 @@
   
     // make the canvas fill its parent
     function onResize() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      canvas.width = canvas.parentElement.offsetWidth;
+      canvas.height = canvas.parentElement.offsetHeight;
     }
   
   })();
