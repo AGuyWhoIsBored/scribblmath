@@ -62,9 +62,11 @@ var yourMath = 'E = mc^2';
 
 // only have GET routes for two different CRA instances!
 //app.get('/', (req, res) => res.sendFile(__dirname + '/public/external.html'));
+//app.get('/main', checkAuthenticated, (req, res) => res.sendFile(__dirname + '/public/main.html'));
+
+// using only one CRA w/ route handler on frontend and prerendering
 app.get('/*', (req, res) => res.sendFile(__dirname + '/scribblmath-main/build/index.html'));
 
-app.get('/main', checkAuthenticated, (req, res) => res.sendFile(__dirname + '/public/main.html'));
 
 app.get('/mjtest', (req, res) => 
 {
@@ -81,7 +83,6 @@ app.get('/mjtest', (req, res) =>
 app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
     successRedirect: '/main',
     failureRedirect: '/login',
-
     failureFlash: true
 }));
 
