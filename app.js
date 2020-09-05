@@ -75,16 +75,15 @@ app.get('/mjtest', (req, res) =>
     })
 });
 
-// take a look at http://www.passportjs.org/docs/authenticate/ to see if we can consolidate two CRA instances into one (send back JSON auth response)
 app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
     successRedirect: '/main',
     failureRedirect: '/login',
     failureFlash: true
 }));
 
-app.post('/register', checkNotAuthenticated, async (req, res) => 
+app.post('/signup', checkNotAuthenticated, async (req, res) => 
 {
-    console.log("hit register post route");
+    console.log("hit signup post route");
     try 
     {
         // make sure that an account w/ the same email doesn't already exist

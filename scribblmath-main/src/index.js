@@ -3,9 +3,8 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter} from 'react-router-dom';
 import './index.css';
 import App from './App';
-import createacc  from './components/createacc';
-import login from './components/login' 
 
+// main mounting point of react app
 ReactDOM.render(
   <BrowserRouter>
       <App />

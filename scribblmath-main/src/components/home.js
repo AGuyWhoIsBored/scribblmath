@@ -1,6 +1,7 @@
 import React from 'react';
 import createClass from 'create-react-class';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { Link as ScrollLink, animateScroll as scroll } from 'react-scroll';
 import './home.css';
 
 // get our fontawesome imports
@@ -13,24 +14,26 @@ render: function () {
       <div className="App">
         <header className="App-header">  
           <FontAwesomeIcon className="App-logo" icon={faPencilRuler} />
-          <h1 className = "App-title">
-            Scribble Math
+          <h1 className ="App-title">
+            Scribbl Math
           </h1>
-          <Link to ="/login"><button className = "login-button" type ="button">
+
+          <p>Easily convey complex mathematical ideas in a virtual setting!</p>
+
+          <Link to="/login"><button className ="login-button" type ="button">
             Click here to log in
           </button></Link>
 
-          <div className = "create-account-option">Not a member? <Link to = "/signup">Create an account</Link> </div>
+          <div className = "create-account-option">Not a member? <Link to = "/signup" style={{ color: "blue"}}>Create an account</Link> </div>
           <br></br>
-          <FontAwesomeIcon className="arrow-scroll" icon={faSortDown}/>
+
+          <ScrollLink activeClass="active" to="Description-section" spy={true} smooth={true} offset={-70} duration={500}><FontAwesomeIcon className="arrow-scroll" icon={faSortDown}/></ScrollLink>
         </header>
 
 
         <section className="Description-section">
           <h2>Our Goal</h2>
-          <br></br>
-          <br></br>
-          <br></br>
+          <p></p>
         </section>
       </div>
     );

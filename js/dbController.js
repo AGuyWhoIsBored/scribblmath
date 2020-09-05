@@ -9,8 +9,6 @@ const dbCon = mysql.createConnection({
     database: process.env.DB_NAME
 });
 
-console.log(process.env.DB_HOST, process.env.DB_USER, process.env.DB_PASS, process.env.DB_NAME);
-
 // establish connection to DB
 dbCon.connect(err => 
 {
@@ -20,7 +18,6 @@ dbCon.connect(err =>
 
 // DB manipulation functions
 // data for now will always be null
-
 function addUser(username, password, email)
 {
     var sqlQuery = `INSERT INTO users (username, password, email, data) VALUES (?, ?, ?, ?)`;
