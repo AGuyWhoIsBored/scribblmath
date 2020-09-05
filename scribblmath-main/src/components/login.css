@@ -20,14 +20,19 @@
     text-align: center;
   }
   
+  .login-title {
+    font-weight: bold;
+    font-size: 1em;
+    margin: 5px;
+  }
+
   .login-logo {
-    height: 40vmin;
-    font-size: 30px;
+    font-size: 40px;
     color: #61DBFB;
     pointer-events: none;
     text-align-last: center;
     padding: 20px;
-    margin-top: 50px;
+    margin-top: 10px;
   }
     
   .login-header {
@@ -35,7 +40,7 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    text-align: center;
     font-size: calc(10px + 2vmin);
     color: white;
   }

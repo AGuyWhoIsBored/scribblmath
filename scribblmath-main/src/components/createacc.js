@@ -1,26 +1,44 @@
 import React from 'react';
+import createClass from 'create-react-class';
 import logo from '../logo.svg';
 import './createacc.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
 
-export default App;
+// get our fontawesome imports
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPencilRuler, faSortDown } from '@fortawesome/free-solid-svg-icons'
+
+var createacc = createClass ({
+  render: function () {
+    return (
+      <div className = "login-header">
+        <form action="/login" method="POST">
+          <div className="login-logo"><FontAwesomeIcon icon={faPencilRuler} /></div>
+          <h1 className="login-title">Create your account</h1>
+          <div>
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter username" name="name" required></input>
+          </div>
+
+          <div>
+            <label for="email">Email</label>
+            <input type="email" placeholder="Enter email" name="email" required></input>
+          </div>
+          
+          <div>
+            <label for="password"><b>Password</b></label>
+            <input type="password" placeholder="Enter password" name="password" required></input>
+          </div>
+          <div>
+            <label for="passwordConfirm"><b>Comfirm Password</b></label>
+            <input type="password" placeholder="Re-enter password" name="passwordConfirm" required></input>
+          </div>
+
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    );
+  }
+});
+
+export default createacc;

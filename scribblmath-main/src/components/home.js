@@ -20,7 +20,7 @@ render: function () {
             Click here to log in
           </button></Link>
 
-          <div className = "create-account-option">Not a member? <a href="#">Create an account</a> </div>
+          <div className = "create-account-option">Not a member? <Link to = "/signup">Create an account</Link> </div>
           <br></br>
           <FontAwesomeIcon className="arrow-scroll" icon={faSortDown}/>
         </header>
