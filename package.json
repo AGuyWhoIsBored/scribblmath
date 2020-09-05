@@ -2,9 +2,9 @@
   "name": "covidhacks2020",
   "version": "1.0.0",
   "description": "This is our (Duncan Applegarth, Justin Chang) submission for COVID Hacks 2020!",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "devStart": "nodemon server.js"
+    "devStart": "nodemon app.js"
   },
   "repository": {
     "type": "git",

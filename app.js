@@ -9,6 +9,8 @@ console.log("^^ if you see the correct host above, env vars are loaded ^^");
 // external package imports
 const express = require('express');
 const app = express();
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
 const argon2 = require('argon2');
 const passport = require('passport');
 const flash = require('express-flash');
