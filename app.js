@@ -27,7 +27,8 @@ console.log("Passport auth engine initialized");
 
 // configure express
 app.set('view-engine', 'ejs');
-app.use(express.static('public'));
+//app.use(express.static('public')); // using express static
+app.use(express.static(__dirname + '/scribblmath-main/build')); // using react static
 app.use(flash());
 
 app.use(session({
@@ -60,7 +61,9 @@ var yourMath = 'E = mc^2';
 /* TOP-LEVEL ROUTES */ 
 
 // only have GET routes for two different CRA instances!
-app.get('/', (req, res) => res.sendFile(__dirname + '/public/external.html'));
+//app.get('/', (req, res) => res.sendFile(__dirname + '/public/external.html'));
+app.get('/*', (req, res) => res.sendFile(__dirname + '/scribblmath-main/build/index.html'));
+
 app.get('/main', checkAuthenticated, (req, res) => res.sendFile(__dirname + '/public/main.html'));
 
 app.get('/mjtest', (req, res) => 
