@@ -47,10 +47,19 @@ app.use(passport.session());
 
 // server-wide data
 var numUsers = 0;
+const ROOM_ID = 0;
 
 /* TOP-LEVEL ROUTES */ 
 
-app.get('/', (req, res) => res.sendFile(__dirname + '/public/test.html'));
+// only have GET routes for two different CRA instances!
+app.get('/', (req, res) => res.sendFile(__dirname + '/public/external.html'));
+app.get('/main', checkAuthenticated, (req, res) => res.sendFile(__dirname + '/public/main.html'));
+
+app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
+    successRedirect: '/main',
+    failureRedirect: '/login',
+    failureFlash: true
+}));
 
 /* MIDDLEWARE */ 
 function checkAuthenticated(req, res, next)
@@ -124,6 +133,18 @@ io.on('connection', (socket) =>
                 numUsers: numUsers
             });
         }
+    });
+
+    // for webcam stream
+    socket.on('join-room', (roomId, userId) => 
+    {
+        socket.join(roomId);
+        socket.to(roomId).broadcast.emit('user-connected', userId);
+
+        socket.on('disconnect', () => 
+        {
+            socket.to(roomId).broadcast.emit('user-disconnected', userId);
+        });
     });
 });
 
