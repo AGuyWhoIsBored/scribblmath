@@ -74,11 +74,41 @@ app.get('/mjtest', (req, res) =>
     })
 });
 
+// take a look at http://www.passportjs.org/docs/authenticate/ to see if we can consolidate two CRA instances into one (send back JSON auth response)
 app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
     successRedirect: '/main',
     failureRedirect: '/login',
+
     failureFlash: true
 }));
+
+app.post('/register', checkNotAuthenticated, async (req, res) => 
+{
+    try 
+    {
+        // make sure that an account w/ the same email doesn't already exist
+        const userLookup = await db.getUserByEmail(req.body.email);
+        if (userLookup !== null)
+        {
+            console.log("new user attempted to make account with an existing email");
+            res.render('pages/register.ejs', { message: "An account with that email already exists!"}); // INTERACT w/ REACT FRONTEND
+        }
+        else if (req.body.password !== req.body.passwordConfirm)
+        {
+            console.log("new user didn't match up passwords on registration attempt");
+            res.render('pages/register.ejs', { message: "The confirmation password did not match the original!" }); // INTERACT w/ REACT FRONTEND
+        }
+        else
+        {
+            const hashedPassword = await argon2.hash(req.body.password, { type: argon2.argon2id });
+            // upload to database
+            db.addUser(req.body.name, hashedPassword, req.body.email);
+            req.flash('info', 'Account successfully created! Please login.'); // INTERACT w/ REACT FRONTEND
+            res.redirect('/login');                                           // INTERACT w/ REACT FRONTEND
+        }
+
+    } catch (e) { res.redirect('/register'); /* INTERACT w/ REACT FRONTEND */ }
+});
 
 /* MIDDLEWARE */ 
 function checkAuthenticated(req, res, next)
