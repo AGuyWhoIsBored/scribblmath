@@ -4,6 +4,7 @@ import './App.css';
 import home from './components/home';
 import createacc  from './components/createacc';
 import login from './components/login'; 
+import main from './components/main';
 
 function App() {
     return (
@@ -12,11 +13,10 @@ function App() {
               <Route path="/" component={home} exact />
               <Route path="/login" component={login} exact />
               <Route path="/signup" component={createacc} exact/>
+              <Route path="/main" component={main} extact/>
           </Switch>
       </main>
   )
 }
 
-/*<Route path="/login" component={About} />
-              <Route path="/createacc" component={Shop} />*/
 export default App;
