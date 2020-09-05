@@ -12,11 +12,11 @@ var createacc = createClass ({
   render: function () {
     return (
       <div className = "login-header">
-        <form action="/login" method="POST">
+        <form action="/register" method="POST">
           <div className="login-logo"><FontAwesomeIcon icon={faPencilRuler} /></div>
           <h1 className="login-title">Create your account</h1>
           <div>
-            <label for="uname"><b>Username</b></label>
+            <label for="name"><b>Username</b></label>
             <input type="text" placeholder="Enter username" name="name" required></input>
           </div>
 

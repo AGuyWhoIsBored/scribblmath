@@ -15,6 +15,7 @@ const argon2 = require('argon2');
 const passport = require('passport');
 const flash = require('express-flash');
 const session = require('express-session');
+const bodyParser = require('body-parser');
 const mjAPI = require('mathjax-node');
 
 // internal imports
@@ -29,6 +30,8 @@ console.log("Passport auth engine initialized");
 app.set('view-engine', 'ejs');
 //app.use(express.static('public')); // using express static
 app.use(express.static(__dirname + '/scribblmath-main/build')); // using react static
+app.use(bodyParser.json({ limit: '1mb' }));
+app.use(bodyParser.urlencoded({ limit: '1mb', extended: false }));
 app.use(flash());
 
 app.use(session({
@@ -88,6 +91,7 @@ app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
 
 app.post('/register', checkNotAuthenticated, async (req, res) => 
 {
+    console.log("hit register post route");
     try 
     {
         // make sure that an account w/ the same email doesn't already exist
@@ -109,9 +113,10 @@ app.post('/register', checkNotAuthenticated, async (req, res) =>
             db.addUser(req.body.name, hashedPassword, req.body.email);
             req.flash('info', 'Account successfully created! Please login.'); // INTERACT w/ REACT FRONTEND
             res.redirect('/login');                                           // INTERACT w/ REACT FRONTEND
+            console.log("account successfully created");
         }
 
-    } catch (e) { res.redirect('/register'); /* INTERACT w/ REACT FRONTEND */ }
+    } catch (e) { console.log("AN ERROR OCCURRED!"); res.redirect('/signup'); /* INTERACT w/ REACT FRONTEND */ }
 });
 
 /* MIDDLEWARE */ 
