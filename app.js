@@ -15,6 +15,7 @@ const argon2 = require('argon2');
 const passport = require('passport');
 const flash = require('express-flash');
 const session = require('express-session');
+const mjAPI = require('mathjax-node');
 
 // internal imports
 const db = require('./js/dbController');
@@ -45,15 +46,33 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+// configure MathJax
+mjAPI.config({
+    MathJax: {}
+});
+mjAPI.start();
+
 // server-wide data
 var numUsers = 0;
 const ROOM_ID = 0;
+var yourMath = 'E = mc^2';
 
 /* TOP-LEVEL ROUTES */ 
 
 // only have GET routes for two different CRA instances!
 app.get('/', (req, res) => res.sendFile(__dirname + '/public/external.html'));
 app.get('/main', checkAuthenticated, (req, res) => res.sendFile(__dirname + '/public/main.html'));
+
+app.get('/mjtest', (req, res) => 
+{
+    mjAPI.typeset({
+        math: yourMath,
+        format: 'TeX',
+        html: true,
+    }, function(data) {
+        if (!data.errors) { console.log(data.html); }
+    })
+});
 
 app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
     successRedirect: '/main',
