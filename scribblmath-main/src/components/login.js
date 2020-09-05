@@ -12,7 +12,8 @@ var login = createClass ({
       return (
         <div className = "login-header">
           <form>
-          <FontAwesomeIcon className="login-logo" icon={faPencilRuler} />
+            <div className="login-logo"><FontAwesomeIcon icon={faPencilRuler} /></div>
+            <h1>ScribbleMath</h1>
             <label for="email"><b>Email</b></label>
             <input type="text" placeholder="Enter email" name="email" required></input>
             <label for="pass"><b>Password</b></label>

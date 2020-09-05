@@ -11,10 +11,10 @@
   }
   
   /* Bordered form */
-form {
-    border: 3px solid #f1f1f1;
+
+  form {
+      display: inline-block;
   }
-  
   
   .App {
     text-align: center;
@@ -22,11 +22,12 @@ form {
   
   .login-logo {
     height: 40vmin;
-    font-size: 150px;
+    font-size: 30px;
     color: #61DBFB;
     pointer-events: none;
-    display: inline-block;
-    align-self: center;
+    text-align-last: center;
+    padding: 20px;
+    margin-top: 50px;
   }
     
   .login-header {
