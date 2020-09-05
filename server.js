@@ -1,4 +1,5 @@
 // this is the main backend for SCRIBBL MATH
+console.log("Starting SCRIBBL MATH backend");
 
 // load env vars
 require('dotenv').config();
@@ -31,7 +32,10 @@ app.use(session({
     // }
 }));
 
-app.get('/', (req, res) => res.send("Hello world!"));
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.get('/', (req, res) => res.sendFile(__dirname + '/public/test.html'));
 
 console.log("Backend server listening on port 3000");
 app.listen(3000);
