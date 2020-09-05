@@ -9,6 +9,8 @@ const dbCon = mysql.createConnection({
     database: process.env.DB_NAME
 });
 
+console.log(process.env.DB_HOST, process.env.DB_USER, process.env.DB_PASS, process.env.DB_NAME);
+
 // establish connection to DB
 dbCon.connect(err => 
 {

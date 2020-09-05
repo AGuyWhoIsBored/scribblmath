@@ -45,6 +45,9 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+// server-wide data
+var numUsers = 0;
+
 /* TOP-LEVEL ROUTES */ 
 
 app.get('/', (req, res) => res.sendFile(__dirname + '/public/test.html'));
@@ -62,6 +65,67 @@ function checkNotAuthenticated(req, res, next)
     next(); 
 }
 
+/* SERVER-LEVEL SOCKET CODE */
+io.on('connection', (socket) => 
+{
+    // for whiteboard
+    socket.on('drawing', (data) => socket.broadcast.emit('drawing', data));
+
+    // for chat
+    var addedUser = false;
+
+    socket.on('new message', data => 
+    {
+        socket.broadcast.emit('new message', {
+            username: socket.username,
+            message: data
+        });
+    });
+
+    socket.on('add user', username => 
+    {
+        if (addedUser) return;
+
+        socket.username = username;
+        ++numUsers;
+        addedUser = true;
+        socket.emit('login', {
+            numUsers: numUsers
+        });
+
+        socket.broadcast.emit('user joined', {
+            username: socket.username,
+            numUsers: numUsers
+        });
+    });
+
+    socket.on('typing', () => 
+    {
+        socket.broadcast.emit('typing', {
+            username: socket.username
+        });
+    });
+
+    socket.on('stop typing', () => 
+    {
+        socket.broadcast.emit('stop typing', {
+            username: socket.username
+        });
+    });
+
+    socket.on('disconnect', () => 
+    {
+        if (addedUser)
+        {
+            --numUsers;
+
+            socket.broadcast.emit('user left', {
+                username: socket.username,
+                numUsers: numUsers
+            });
+        }
+    });
+});
 
 console.log("Backend server listening on port 3000");
-app.listen(3000);
+http.listen(3000);

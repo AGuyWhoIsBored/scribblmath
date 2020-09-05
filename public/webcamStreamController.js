@@ -1,7 +1,7 @@
 // code that will manage webcam streams and mics
 
 
-const socket = io('/'); // MAY NEED TO CHANGE THIS??
+const socket = io(); // MAY NEED TO CHANGE THIS??
 const videoGrid = document.getElementById('video-grid');
 const myPeer = new Peer(undefined, {}); // for now, define w/ empty options - use 0.peerjs.com for peer server
 const myVideo = document.createElement(video);
