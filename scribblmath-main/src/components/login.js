@@ -14,9 +14,9 @@ var login = createClass ({
           <form action="/login" method="POST">
           <FontAwesomeIcon className="login-logo" icon={faPencilRuler} />
             <label for="email"><b>Email</b></label>
-            <input type="text" placeholder="Enter email" name="email" required></input>
-            <label for="pass"><b>Password</b></label>
-            <input type="text" placeholder="Enter password" name="pass" required></input>
+            <input type="email" placeholder="Enter email" name="email" required></input>
+            <label for="password"><b>Password</b></label>
+            <input type="password" placeholder="Enter password" name="password" required></input>
             <button type="submit">Submit</button>
           </form>
         </div>
