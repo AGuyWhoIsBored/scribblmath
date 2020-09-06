@@ -73,7 +73,7 @@ button:hover {
 }
  
 .float-child-left {
-    width: 0.7;
+    width: 70%;
     display: inline-block;
     height: 50vh;
     left: 27px;
@@ -151,6 +151,7 @@ video
 ul {
   list-style: none;
   word-wrap: break-word;
+  text-align: left;
 }
  
 /* Pages */
@@ -171,7 +172,7 @@ ul {
 /* Chat page */
  
 .chat.page {
-  background-color: #282c34;
+  background-color: #353A45;
 }
  
 /* Font */
@@ -185,10 +186,10 @@ ul {
 }
  
 .log {
-  color: gray;
-  font-size: 0.7;
+  color: lightgray;
+  font-size: 70%;
   margin: 5px;
-  text-align: center;
+  text-align: left;
 }
  
 /* Messages */
@@ -206,8 +207,10 @@ ul {
 }
  
 .message.typing .messageBody {
-  color: gray;
+  color: lightgray;
 }
+
+.messageBody { color: white;}
  
 .username {
   font-weight: 700;

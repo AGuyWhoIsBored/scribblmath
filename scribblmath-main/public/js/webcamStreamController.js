@@ -43,7 +43,7 @@ navigator.mediaDevices.getUserMedia({
       stream.getAudioTracks()[0].enabled = micStatus === 'true' ? true : false;
       console.log(stream.getVideoTracks()[0].enabled, stream.getAudioTracks()[0].enabled);
     }
-  }, 1000);
+  }, 250);
 })
 
 socket.on('user-disconnected', userId => {

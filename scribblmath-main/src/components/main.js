@@ -74,6 +74,9 @@ var main = createClass ({
                                 <input class="inputMessage" placeholder="Type here..."/>
                             </li>
                         </ul>
+                        <div style={{paddingTop: "4em", color: "white"}}>
+                            <small>Start your message with "CreateNiceMath" and the rest of the message will be interpreted as (La)TeX code to generate nice math!</small>
+                        </div>
                     </div>
 
                     <div style={{height: "100%", position: "relative"}}></div>    
