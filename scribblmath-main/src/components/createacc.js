@@ -14,7 +14,7 @@ var createacc = createClass ({
                 <div><input type="text" placeholder="Enter username" name="name" required></input></div>
                 <div><input type="email" placeholder="Enter email" name="email" required></input></div>
                 <div><input type="password" placeholder="Enter password" name="password" required></input></div>
-                <div><input type="password" placeholder="Re-enter password" name="password" required></input></div>
+                <div><input type="password" placeholder="Re-enter password" name="passwordConfirm" required></input></div>
               
 
                 <div>
