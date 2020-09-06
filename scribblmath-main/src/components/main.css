@@ -9,7 +9,7 @@
 }
  
 button:hover {
-  opacity: 70%;
+  opacity: 0.7;
 }
  
 /* Styling for specific classes inside header section of main page*/
@@ -56,7 +56,7 @@ button:hover {
   color: #ccc;
 }
   .main-button:hover {
-    opacity: 70%;
+    opacity: 0.7;
   }
 
   /*Containers used to format whiteboard and chatbox */
@@ -73,7 +73,7 @@ button:hover {
 }
  
 .float-child-left {
-    width: 70%;
+    width: 0.7;
     display: inline-block;
     height: 50vh;
     left: 27px;
@@ -186,7 +186,7 @@ ul {
  
 .log {
   color: gray;
-  font-size: 70%;
+  font-size: 0.7;
   margin: 5px;
   text-align: center;
 }

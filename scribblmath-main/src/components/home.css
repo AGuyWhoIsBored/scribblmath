@@ -9,7 +9,7 @@
 }
 
 button:hover {
-  opacity: 70%;
+  opacity: 0.7;
 }
 
 
@@ -81,7 +81,9 @@ button:hover {
   padding: none;
 }
 
-.scroll:hover { opacity: 70%; }
+.arrow-scroll:hover{
+  opacity: 0.7;
+}
 
  /* Styling for specific classes inside description section */
 .Description-section{
