@@ -56,10 +56,31 @@ $(function() {
     }
   
     // Sends a chat message
-    const sendMessage = () => {
+    const sendMessage = async () => {
+
       var message = $inputMessage.val();
-      // Prevent markup from being injected into the message
-      message = cleanInput(message);
+
+      if (message.includes('MathJax '))
+      {
+        console.log("typesetting message");
+        message = message.replace("MathJax ", "");
+
+        fetch('/nicemath', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ inputMath: message })
+        }).then(data => data.json())
+        .then(data => { /*console.log(data);*/ sendMsgPart2(data.mml) }); // <-- chrome doesn't support MML for some reason, so fix later!
+      }
+      else
+      {
+        message = cleanInput(message);
+        sendMsgPart2(message); 
+      }
+    }
+
+    const sendMsgPart2 = message =>
+    {
       // if there is a non-empty message and a socket connection
       if (message && connected) {
         $inputMessage.val('');
@@ -70,7 +91,7 @@ $(function() {
         // tell server to execute 'new message' and send along one parameter
         socket.emit('new message', message);
       }
-    }
+    };
   
     // Log a message
       const log = (message, options) => {
@@ -92,7 +113,7 @@ $(function() {
         .text(data.username)
         .css('color', getUsernameColor(data.username));
       var $messageBodyDiv = $('<span class="messageBody">')
-        .text(data.message);
+        .html(data.message); // <-- message is cleaned beforehand if entered thru textbox, so this will only turn into HTML thru MathJax!
   
       var typingClass = data.typing ? 'typing' : '';
       var $messageDiv = $('<li class="message"/>')
@@ -194,7 +215,7 @@ $(function() {
   
     // Keyboard events
   
-    $window.keydown(event => {
+    $window.keydown(async event => {
       // Auto-focus the current input when a key is typed
       if (!(event.ctrlKey || event.metaKey || event.altKey)) {
         $currentInput.focus();
@@ -202,7 +223,7 @@ $(function() {
       // When the client hits ENTER on their keyboard
       if (event.which === 13) {
         if (username) {
-          sendMessage();
+          await sendMessage();
           socket.emit('stop typing');
           typing = false;
         } else {
@@ -233,7 +254,7 @@ $(function() {
     socket.on('login', (data) => {
       connected = true;
       // Display the welcome message
-      var message = "Welcome to Socket.IO Chat – ";
+      var message = "Welcome to the SCRIBBL MATH global room! Have fun :)";
       log(message, {
         prepend: true
       });
@@ -283,7 +304,8 @@ $(function() {
       log('attempt to reconnect has failed');
     });
 
-    $usernameInput = "chad";
-    setUsername();
-  
+    // get username and set accordingly
+    fetch('/getuserinfo')
+      .then(resp => resp.json())
+      .then(data => { console.log(data); $usernameInput = data.username; setUsername(); });
   });
