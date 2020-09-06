@@ -2,43 +2,56 @@ import React from 'react';
 import createClass from 'create-react-class';
 import './main.css'
 
+// get our fontawesome imports
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPencilRuler, faSortDown } from '@fortawesome/free-solid-svg-icons'
+
 var main = createClass ({
     render: function() {
         return (
-            <div className="center">
-                <div class="float-container">
-
-                {/* whiteboard */}
-                <div class="float-child">
-                    <canvas class="whiteboard"></canvas>
-
-                    <div class="colors">
-                        <div class="color black"></div>
-                        <div class="color red"></div>
-                        <div class="color green"></div>
-                        <div class="color blue"></div>
-                        <div class="color yellow"></div>
+            <div class = "main-background">
+                <div class="main-header">
+                    <div style = {{padding: "10px 0px 0px 20px"}}>
+                        <span><FontAwesomeIcon className="main-logo" icon={faPencilRuler} /> </span>
+                        <span class="main-title">ScribblMath</span>
                     </div>
                 </div>
-                
-                {/* chat */}
-                <div class="float-child" id="chatwindow">
-                    <ul class="pages">
-                        <li class="chat page">
-                            <div class="chatArea">
-                                <ul class="messages"></ul>
-                            </div>
-                            <input class="inputMessage" placeholder="Type here..."/>
-                        </li>
-                    </ul>
-                </div>
-                
-                {/* webcam streams */}
-                </div>
-                <div id="video-grid">
+                <div className="center">
 
-                </div>
-            </div>
+                    {/* whiteboard */}
+                    <div class="float-child-left">
+                        <canvas class="whiteboard"></canvas>
+
+                        <div class="colors" style={{position: "static", height:"20%"}}>
+                            <div class="color black" ></div>
+                            <div class="color red"></div>
+                            <div class="color green"></div>
+                            <div class="color blue"></div>
+                            <div class="color yellow"></div>
+                        </div>
+                    </div> 
+                    
+                    {/* chat */}
+                    <div class="float-child-right" id="chatwindow">
+                        <ul class="pages">
+                            <li class="chat page">
+                                <div class="chatArea">
+                                    <ul class="messages"></ul>
+                                </div>
+                                <input class="inputMessage" placeholder="Type here..."/>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div style={{height: "100%", position: "relative"}}></div>    
+                    {/* webcam streams */}
+                
+                    </div>
+                        <div id="video-grid">
+
+                        </div>
+                    </div>
+                
         );
     },
     componentDidMount: function()
