@@ -4,7 +4,7 @@ import './main.css'
 
 // get our fontawesome imports
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPencilRuler, faMicrophone, faVolumeUp, faEraser, faMicrophoneSlash, faVolumeMute, faVideo, faVideoSlash} from '@fortawesome/free-solid-svg-icons'
+import { faPencilRuler, faMicrophone, faEraser, faMicrophoneSlash, faVideo, faVideoSlash} from '@fortawesome/free-solid-svg-icons'
 
 function IconToggler(props)
 {
