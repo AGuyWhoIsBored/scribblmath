@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 * {
-  font-family: "Open sans";
+  /* font-family: "Open sans"; */
   box-sizing: border-box;
 }
 
@@ -96,6 +96,7 @@ video
 ul {
   list-style: none;
   word-wrap: break-word;
+  font-family: 'Times' !important;
 }
 
 /* Pages */
@@ -133,14 +134,14 @@ ul {
   color: gray;
   font-size: 70%;
   margin: 5px;
-  text-align: center;
+  text-align: left;
 }
 
 /* Messages */
 
 .chatArea {
-  height: 100%;
-  padding-bottom: 60px;
+  height: 85%;
+  /* padding-bottom: 60px; */
 }
 
 .messages {
@@ -164,7 +165,7 @@ ul {
 /* Input */
 
 .inputMessage {
-  border: 10px solid #000;
+  border: 3px solid #000;
   bottom: 0;
   height: 60px;
   left: 0;

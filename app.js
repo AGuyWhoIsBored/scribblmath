@@ -45,14 +45,12 @@ app.use(passport.session());
 
 // configure MathJax
 mjAPI.config({
-    MathJax: {}
+    fontUrl: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS'
 });
 mjAPI.start();
 
 // server-wide data
 var numUsers = 0;
-const ROOM_ID = "GLOBAL"; // global room ID - only one room for now
-var yourMath = 'E = mc^2';
 
 /* TOP-LEVEL ROUTES */ 
 
@@ -62,17 +60,22 @@ var yourMath = 'E = mc^2';
 app.get('/main', checkAuthenticated, (req, res) => res.sendFile(__dirname + '/scribblmath-main/build/index.html'));
 app.get('/signup', checkNotAuthenticated, (req, res) => res.sendFile(__dirname + '/scribblmath-main/build/index.html'));
 
+app.get('/getuserinfo', checkAuthenticated, (req, res) => res.json({ username: req.user.username, email: req.user.email, data: req.user.data }));
+
 // MUST BE LAST!!
 app.get('/*', (req, res) => res.sendFile(__dirname + '/scribblmath-main/build/index.html'));
 
-app.get('/mjtest', (req, res) => 
+/* POST ROUTES */
+
+app.post('/nicemath', async (req, res) => 
 {
     mjAPI.typeset({
-        math: yourMath,
+        math: req.body.inputMath,
         format: 'TeX',
-        html: true,
+        mml: true
     }, function(data) {
-        if (!data.errors) { console.log(data.html); }
+        if (!data.errors) { res.json(data); }
+        else { console.log("data for mathjax typesetting has some errors"); console.log(data.errors); }
     })
 });
 
