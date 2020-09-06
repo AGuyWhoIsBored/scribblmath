@@ -67,6 +67,7 @@ app.get('/*', (req, res) => res.sendFile(__dirname + '/scribblmath-main/build/in
 
 /* POST ROUTES */
 
+// https://github.com/mathjax/MathJax-demos-web
 app.post('/nicemath', async (req, res) => 
 {
     mjAPI.typeset({

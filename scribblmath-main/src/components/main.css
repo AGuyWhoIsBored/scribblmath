@@ -179,13 +179,8 @@ ul {
 /* Messages */
 
 .chatArea {
-<<<<<<< HEAD
-  height: 100%;
-  /*padding-bottom: 60px;*/
-=======
   height: 85%;
   /* padding-bottom: 60px; */
->>>>>>> ea3534188369284bdeddad58490cd1ae3dedabfb
 }
 
 .messages {
@@ -209,10 +204,7 @@ ul {
 /* Input */
 
 .inputMessage {
-<<<<<<< HEAD
-=======
   border: 3px solid #000;
->>>>>>> ea3534188369284bdeddad58490cd1ae3dedabfb
   bottom: 0;
   height: 60px;
   left: 0;
