@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 
+  /* General HTML element styling */
 * {
     font-family: "Open sans";
   }
@@ -11,8 +12,6 @@
     opacity: 70%;
   }
   
-  /* Bordered form */
-
   form {
       display: inline-block;
   }
@@ -26,6 +25,7 @@
     box-sizing: border-box;
   }
 
+  /* Styling for specific classes inside signup form */
   .cancel-icon {
     float: right;
     color: #ccc;
@@ -49,9 +49,6 @@
     height: 500px;
     margin-top: 40px;
     box-shadow: 0 0 3px 0 rgba(0,0,0,0.3);
-  }
-  .App {
-    text-align: center;
   }
   
   .signup-title {
@@ -79,11 +76,6 @@
     border-radius: 8px;
     border-color: lightblue;
     background-color:  #61DBFB;
-  }
-  
-  
-  .App-link {
-    color: #61dafb;
   }
   
   .already-member{

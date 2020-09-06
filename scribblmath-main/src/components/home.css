@@ -2,6 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
+/* General HTML element styling */
+
 * {
   font-family: "Open sans";
 }
@@ -10,6 +12,8 @@ button:hover {
   opacity: 70%;
 }
 
+
+ /* Styling for specific classes inside header section */
 .App {
   text-align: center;
 }
@@ -38,9 +42,6 @@ button:hover {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
 @keyframes App-logo-spin {
   from {
@@ -72,7 +73,7 @@ button:hover {
 
 .create-account-option {
   font-family: "Open sans";
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .arrow-scroll {
@@ -84,6 +85,7 @@ button:hover {
   opacity: 70%;
 }
 
+ /* Styling for specific classes inside description section */
 .Description-section{
   height: 590px;
 }

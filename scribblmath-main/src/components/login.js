@@ -19,7 +19,7 @@ var login = createClass ({
               </Link>
             </div>
             <div className="login-logo"><FontAwesomeIcon icon={faPencilRuler} /></div>
-            <div class="black-font login-title">Log in to ScribbleMath</div>
+            <div class="black-font login-title">Log in to ScribblMath</div>
             <div>
               <input type="email" placeholder="Enter email" name="email" required></input>
             </div>

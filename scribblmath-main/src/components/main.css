@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
  
+/* General HTML element styling */
 * {
   font-family: "Open sans";
   box-sizing: border-box;
@@ -11,21 +12,7 @@ button:hover {
   opacity: 70%;
 }
  
-.App {
-  text-align: center;
-}
- 
-.App-header {
-    background-color: #282c34;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-  }
- 
+/* Styling for specific classes inside header section of main page*/
   .main-background {
     background-color: #2c2f33;
     height:100vh
@@ -52,6 +39,28 @@ button:hover {
     margin-top: 5px;
     margin-left: 5px;
   }
+
+   
+.main-buttons {
+  vertical-align: sub;
+  text-align: right;
+  color: white;
+  margin-top:15px;
+  margin-right: 20px;
+}
+
+.main-button {
+  font-size: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
+  color: #ccc;
+}
+  .main-button:hover {
+    opacity: 70%;
+  }
+
+  /*Containers used to format whiteboard and chatbox */
+
   .top-container {
       width: 100%;
       height: 500px;
@@ -86,24 +95,6 @@ button:hover {
     text-align: center;
     position: relative;
 }
- 
-.main-buttons {
-  vertical-align: sub;
-  text-align: right;
-  color: white;
-  margin-top:15px;
-  margin-right: 20px;
-}
-
-.main-button {
-  font-size: 30px;
-  margin-left: 20px;
-  margin-right: 20px;
-  color: #ccc;
-}
-  .main-button:hover {
-    opacity: 70%;
-  }
 
 /* Triggers UI for mic/sound on or off */
 .toogle-inactive {

@@ -1,7 +1,7 @@
 import React from 'react';
 import createClass from 'create-react-class';
 import { Link } from 'react-router-dom';
-import { Link as ScrollLink, animateScroll as scroll } from 'react-scroll';
+import { Link as ScrollLink } from 'react-scroll';
 import './home.css';
 import ourGoalPhoto from '.././assets/ourGoalPhoto.jpeg'
 

@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
+/* General HTML element styling */
 * {
     font-family: "Open sans";
   }
@@ -9,8 +10,6 @@
   button:hover {
     opacity: 70%;
   }
-  
-  /* Bordered form */
 
   form {
       display: inline-block;
@@ -25,6 +24,7 @@
     box-sizing: border-box;
   }
   
+   /* Styling for specific classes inside login form */
   .form-contents {
     background-color: white;
     margin-left: auto;
@@ -34,10 +34,7 @@
     margin-top: 40px;
     box-shadow: 0 0 3px 0 rgba(0,0,0,0.3);
   }
-  .App {
-    text-align: center;
-  }
-  
+
   .cancel-icon {
     float: right;
     color: #ccc;
@@ -99,6 +96,7 @@
     padding:0px;
     margin:0px;
   }
+
   /*Positioning and random styling*/
 
   .black-font {
