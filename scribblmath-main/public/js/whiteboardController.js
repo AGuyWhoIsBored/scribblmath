@@ -7,13 +7,8 @@
     var canvas = document.getElementsByClassName('whiteboard')[0];
     var colors = document.getElementsByClassName('color');
     var context = canvas.getContext('2d');
-  
-    var current = {
-      color: 'black'
-    };
+    var current = { color: 'black' };
     var drawing = false;
-
-    console.log(canvas.getBoundingClientRect());
   
     canvas.addEventListener('mousedown', onMouseDown, false);
     canvas.addEventListener('mouseup', onMouseUp, false);
@@ -26,15 +21,12 @@
     canvas.addEventListener('touchcancel', onMouseUp, false);
     canvas.addEventListener('touchmove', throttle(onMouseMove, 10), false);
   
-    for (var i = 0; i < colors.length; i++){
-      colors[i].addEventListener('click', onColorUpdate, false);
-    }
+    for (var i = 0; i < colors.length; i++) { colors[i].addEventListener('click', onColorUpdate, false); }
   
     socket.on('drawing', onDrawingEvent);
   
     window.addEventListener('resize', onResize, false);
     onResize();
-  
   
     function drawLine(x0, y0, x1, y1, color, emit){
       context.beginPath();
@@ -106,9 +98,6 @@
       canvas.height = canvas.parentElement.offsetHeight;
     }
 
-    function clearWhiteboard()
-    {
-      context.clearRect(0, 0, canvas.width, canvas.height);
-    }
+    function clearWhiteboard() { context.clearRect(0, 0, canvas.width, canvas.height); }
   
   })();
