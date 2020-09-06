@@ -5,7 +5,7 @@ import './login.css';
 
 // get our fontawesome imports
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPencilRuler, faSortDown } from '@fortawesome/free-solid-svg-icons'
+import { faPencilRuler, faTimes } from '@fortawesome/free-solid-svg-icons'
 
 var login = createClass ({
   render: function () {
@@ -13,6 +13,11 @@ var login = createClass ({
       <div className = "login-header">
         <form action="/login" method="POST">
           <div className="form-contents">
+            <div class = "cancel-icon-positioning">
+              <Link to="/">
+                <FontAwesomeIcon icon={faTimes} className = "cancel-icon"></FontAwesomeIcon>
+              </Link>
+            </div>
             <div className="login-logo"><FontAwesomeIcon icon={faPencilRuler} /></div>
             <div class="black-font login-title">Log in to ScribbleMath</div>
             <div>
