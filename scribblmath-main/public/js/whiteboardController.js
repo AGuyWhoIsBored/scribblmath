@@ -1,5 +1,5 @@
 // code to control whiteboard stuff on frontend
-// from https://github.com/socketio/socket.io/blob/master/examples/whiteboard/public/main.js
+// adapted from https://github.com/socketio/socket.io/blob/master/examples/whiteboard/public/main.js
 
 (function() {
 
@@ -12,6 +12,8 @@
       color: 'black'
     };
     var drawing = false;
+
+    console.log(canvas.getBoundingClientRect());
   
     canvas.addEventListener('mousedown', onMouseDown, false);
     canvas.addEventListener('mouseup', onMouseUp, false);
@@ -58,21 +60,21 @@
   
     function onMouseDown(e){
       drawing = true;
-      current.x = e.clientX||e.touches[0].clientX;
-      current.y = e.clientY||e.touches[0].clientY;
+      current.x = (e.clientX||e.touches[0].clientX) - (canvas.getBoundingClientRect().x);
+      current.y = (e.clientY||e.touches[0].clientY) - (canvas.getBoundingClientRect().y);
     }
   
     function onMouseUp(e){
       if (!drawing) { return; }
       drawing = false;
-      drawLine(current.x, current.y, e.clientX||e.touches[0].clientX, e.clientY||e.touches[0].clientY, current.color, true);
+      drawLine(current.x, current.y, (e.clientX||e.touches[0].clientX) - (canvas.getBoundingClientRect().x), (e.clientY||e.touches[0].clientY) - (canvas.getBoundingClientRect().y), current.color, true);
     }
   
     function onMouseMove(e){
       if (!drawing) { return; }
-      drawLine(current.x, current.y, e.clientX||e.touches[0].clientX, e.clientY||e.touches[0].clientY, current.color, true);
-      current.x = e.clientX||e.touches[0].clientX;
-      current.y = e.clientY||e.touches[0].clientY;
+      drawLine(current.x, current.y, (e.clientX||e.touches[0].clientX) - (canvas.getBoundingClientRect().x), (e.clientY||e.touches[0].clientY) - (canvas.getBoundingClientRect().y), current.color, true);
+      current.x = (e.clientX||e.touches[0].clientX) - (canvas.getBoundingClientRect().x);
+      current.y = (e.clientY||e.touches[0].clientY) - (canvas.getBoundingClientRect().y);
     }
   
     function onColorUpdate(e){
@@ -102,6 +104,11 @@
     function onResize() {
       canvas.width = canvas.parentElement.offsetWidth;
       canvas.height = canvas.parentElement.offsetHeight;
+    }
+
+    function clearWhiteboard()
+    {
+      context.clearRect(0, 0, canvas.width, canvas.height);
     }
   
   })();
