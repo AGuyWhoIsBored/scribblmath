@@ -39,14 +39,18 @@ button:hover {
     font-size: 60px;
     padding-right: 10px;
     color:  #61DBFB;
-    vertical-align: middle;
+    vertical-align: sub;
+    float: left
   }
  
   .main-title {
     color: white;
     font-size: 40px;
     font-family: 'Luckiest Guy';
-    vertical-align: middle;
+    vertical-align: sub;
+    float: left;
+    margin-top: 5px;
+    margin-left: 5px;
   }
   .top-container {
       width: 100%;
@@ -83,6 +87,28 @@ button:hover {
     position: relative;
 }
  
+.main-buttons {
+  vertical-align: sub;
+  text-align: right;
+  color: white;
+  margin-top:15px;
+  margin-right: 20px;
+}
+
+.main-button {
+  font-size: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
+  color: #ccc;
+}
+  .main-button:hover {
+    opacity: 70%;
+  }
+
+/* Triggers UI for mic/sound on or off */
+.toogle-inactive {
+  display: none;
+}
 /* ======== for webcam streams ======== */
  
 #video-grid

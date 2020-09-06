@@ -4,9 +4,14 @@ import './main.css'
 
 // get our fontawesome imports
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPencilRuler, faSortDown } from '@fortawesome/free-solid-svg-icons'
+import { faPencilRuler, faMicrophone, faVolumeUp, faEraser, faMicrophoneSlash} from '@fortawesome/free-solid-svg-icons'
 
 var main = createClass ({
+    turnOffMic: function () { 
+        document.getElementById("micOn").classList.add("toogle-inactive");
+        document.getElementById("micOff").classList.remove("toogle-inactive");
+    },
+
     render: function() {
         return (
             <div class = "main-background">
@@ -14,6 +19,13 @@ var main = createClass ({
                     <div style = {{padding: "10px 0px 0px 20px"}}>
                         <span><FontAwesomeIcon className="main-logo" icon={faPencilRuler} /> </span>
                         <span class="main-title">ScribblMath</span>
+                        
+                    </div>
+                    <div class="main-buttons">
+                        <span><FontAwesomeIcon className="main-button" icon = {faMicrophone} id="micOn" onClick='document.getElementById("micOn").classList.add("toogle-inactive"); document.getElementById("micOff").classList.remove("toogle-inactive");'/> </span>
+                        <span><FontAwesomeIcon className="main-button toogle-inactive" icon = {faMicrophoneSlash}  id="micOff"/> </span>
+                        <span><FontAwesomeIcon className="main-button vol-toggle" icon = {faVolumeUp} /> </span>
+                        <span><FontAwesomeIcon className="main-button" icon = {faEraser} style={{"margin-right":"50px"}}/> </span>
                     </div>
                 </div>
                 <div className="center">
@@ -48,7 +60,6 @@ var main = createClass ({
                 
                     </div>
                         <div id="video-grid">
-
                         </div>
                     </div>
                 
@@ -77,6 +88,13 @@ var main = createClass ({
         document.body.appendChild(script2);
         document.body.appendChild(script3);
 
+        //toogling mic
+        const toogleMicOff = document.createElement ('script');
+        toogleMicOff.innerText = `function turnOffMic () { 
+            document.getElementById("micOn").classList.add("toogle-inactive");
+            document.getElementById("micOff").classList.remove("toogle-inactive");
+        }`
+        document.body.appendChild(toogleMicOff);
     }
 })
 
