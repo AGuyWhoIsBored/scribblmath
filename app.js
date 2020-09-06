@@ -51,6 +51,7 @@ mjAPI.start();
 
 // server-wide data
 var numUsers = 0;
+var connectedUsers = [];
 
 /* TOP-LEVEL ROUTES */ 
 
@@ -148,10 +149,12 @@ io.on('connection', (socket) =>
 
     socket.on('add user', username => 
     {
+        console.log("added", username);
         if (addedUser) return;
 
         socket.username = username;
         ++numUsers;
+        connectedUsers.push(username);
         addedUser = true;
         socket.emit('login', {
             numUsers: numUsers
@@ -161,6 +164,9 @@ io.on('connection', (socket) =>
             username: socket.username,
             numUsers: numUsers
         });
+
+        socket.broadcast.emit('activeUserUpdate', { connectedUsers: connectedUsers });
+        console.log("new active users list after add", connectedUsers);
     });
 
     socket.on('typing', () => 
@@ -177,17 +183,22 @@ io.on('connection', (socket) =>
         });
     });
 
-    socket.on('disconnect', () => 
+    socket.on('disconnect', username => 
     {
+        console.log("disconnected", username);
         if (addedUser)
         {
             --numUsers;
+            connectedUsers.splice(connectedUsers.indexOf(username), 1);
 
             socket.broadcast.emit('user left', {
                 username: socket.username,
                 numUsers: numUsers
             });
         }
+
+        socket.broadcast.emit('activeUserUpdate', { connectedUsers: connectedUsers });
+        console.log("new active users list", connectedUsers);
     });
 
     // for webcam stream

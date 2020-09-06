@@ -1,5 +1,5 @@
 // code that will manage frontend chat
-// from https://github.com/socketio/socket.io/blob/master/examples/chat/public/main.js
+// adapted from https://github.com/socketio/socket.io/blob/master/examples/chat/public/main.js
 
 $(function() {
     var FADE_TIME = 150; // ms
@@ -40,7 +40,6 @@ $(function() {
   
     // Sets the client's username
     const setUsername = () => {
-      //username = cleanInput($usernameInput.val().trim());
       username = cleanInput($usernameInput.trim());
 
       // If the username is valid
@@ -60,10 +59,10 @@ $(function() {
 
       var message = $inputMessage.val();
 
-      if (message.includes('MathJax '))
+      if (message.includes('CreateNiceMath '))
       {
         console.log("typesetting message");
-        message = message.replace("MathJax ", "");
+        message = message.replace("CreateNiceMath ", "");
 
         fetch('/nicemath', {
           method: 'POST',
@@ -254,7 +253,7 @@ $(function() {
     socket.on('login', (data) => {
       connected = true;
       // Display the welcome message
-      var message = "Welcome to the SCRIBBL MATH global room! Have fun :)";
+      var message = "Welcome to the SCRIBBLMATH global room! Have fun :)";
       log(message, {
         prepend: true
       });

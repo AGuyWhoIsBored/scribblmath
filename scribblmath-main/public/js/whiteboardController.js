@@ -1,5 +1,5 @@
 // code to control whiteboard stuff on frontend
-// from https://github.com/socketio/socket.io/blob/master/examples/whiteboard/public/main.js
+// adapted from https://github.com/socketio/socket.io/blob/master/examples/whiteboard/public/main.js
 
 (function() {
 
@@ -7,10 +7,7 @@
     var canvas = document.getElementsByClassName('whiteboard')[0];
     var colors = document.getElementsByClassName('color');
     var context = canvas.getContext('2d');
-  
-    var current = {
-      color: 'black'
-    };
+    var current = { color: 'black' };
     var drawing = false;
   
     canvas.addEventListener('mousedown', onMouseDown, false);
@@ -24,15 +21,12 @@
     canvas.addEventListener('touchcancel', onMouseUp, false);
     canvas.addEventListener('touchmove', throttle(onMouseMove, 10), false);
   
-    for (var i = 0; i < colors.length; i++){
-      colors[i].addEventListener('click', onColorUpdate, false);
-    }
+    for (var i = 0; i < colors.length; i++) { colors[i].addEventListener('click', onColorUpdate, false); }
   
     socket.on('drawing', onDrawingEvent);
   
     window.addEventListener('resize', onResize, false);
     onResize();
-  
   
     function drawLine(x0, y0, x1, y1, color, emit){
       context.beginPath();
@@ -58,21 +52,21 @@
   
     function onMouseDown(e){
       drawing = true;
-      current.x = e.clientX||e.touches[0].clientX;
-      current.y = e.clientY||e.touches[0].clientY;
+      current.x = (e.clientX||e.touches[0].clientX) - (canvas.getBoundingClientRect().x);
+      current.y = (e.clientY||e.touches[0].clientY) - (canvas.getBoundingClientRect().y);
     }
   
     function onMouseUp(e){
       if (!drawing) { return; }
       drawing = false;
-      drawLine(current.x, current.y, e.clientX||e.touches[0].clientX, e.clientY||e.touches[0].clientY, current.color, true);
+      drawLine(current.x, current.y, (e.clientX||e.touches[0].clientX) - (canvas.getBoundingClientRect().x), (e.clientY||e.touches[0].clientY) - (canvas.getBoundingClientRect().y), current.color, true);
     }
   
     function onMouseMove(e){
       if (!drawing) { return; }
-      drawLine(current.x, current.y, e.clientX||e.touches[0].clientX, e.clientY||e.touches[0].clientY, current.color, true);
-      current.x = e.clientX||e.touches[0].clientX;
-      current.y = e.clientY||e.touches[0].clientY;
+      drawLine(current.x, current.y, (e.clientX||e.touches[0].clientX) - (canvas.getBoundingClientRect().x), (e.clientY||e.touches[0].clientY) - (canvas.getBoundingClientRect().y), current.color, true);
+      current.x = (e.clientX||e.touches[0].clientX) - (canvas.getBoundingClientRect().x);
+      current.y = (e.clientY||e.touches[0].clientY) - (canvas.getBoundingClientRect().y);
     }
   
     function onColorUpdate(e){
@@ -103,5 +97,7 @@
       canvas.width = canvas.parentElement.offsetWidth;
       canvas.height = canvas.parentElement.offsetHeight;
     }
+
+    function clearWhiteboard() { context.clearRect(0, 0, canvas.width, canvas.height); }
   
   })();
