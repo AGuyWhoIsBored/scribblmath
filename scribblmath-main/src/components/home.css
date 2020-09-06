@@ -91,9 +91,12 @@ button:hover {
 #Description-image {
   padding-left: 80px;
   padding-right: 30px;
+  width: 50%;
+  height: auto;
   float: left;
 }
 
 #Description-text {
-  padding: 40px 100px 40px 40px;
+  padding: 0px 80px 40px 40px;
+  text-align: left;
 }

@@ -30,7 +30,8 @@ var createacc = createClass ({
                 <div>
                 <button type="submit" className="signup-button">Submit</button>
                 </div>
-                </div>
+                <div className = "already-member">Already a member?<Link to="/login" style={{color:"blue"}}> Click here to login</Link></div>
+              </div>
           </div>
         </form>
       </div>

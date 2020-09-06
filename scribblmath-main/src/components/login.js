@@ -28,6 +28,7 @@ var login = createClass ({
               <input type="password" placeholder="Enter password" name="password" required></input>
             </div>
             <button type="submit" className="login-button">Submit</button>
+            <div className = "not-member">Not a member?<Link to="/signup" style={{color:"blue"}}> Click here to sign-up</Link></div>
             </div>
         </form>
       </div>
