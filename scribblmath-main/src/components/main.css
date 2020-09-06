@@ -1,20 +1,20 @@
 /*Font Imports*/
 @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-
+ 
 * {
-  /* font-family: "Open sans"; */
+  font-family: "Open sans";
   box-sizing: border-box;
 }
-
+ 
 button:hover {
   opacity: 70%;
 }
-
+ 
 .App {
   text-align: center;
 }
-
+ 
 .App-header {
     background-color: #282c34;
     min-height: 100vh;
@@ -25,7 +25,7 @@ button:hover {
     font-size: calc(10px + 2vmin);
     color: white;
   }
-
+ 
   .main-background {
     background-color: #2c2f33;
     height:100vh
@@ -34,14 +34,14 @@ button:hover {
     background-color: #23272a;
     height: 80px;
   }
-
+ 
   .main-logo {
     font-size: 60px;
     padding-right: 10px;
     color:  #61DBFB;
     vertical-align: middle;
   }
-
+ 
   .main-title {
     color: white;
     font-size: 40px;
@@ -52,13 +52,13 @@ button:hover {
       width: 100%;
       height: 500px;
       border: black solid;
-
+ 
   }
-
+ 
   .float-container {
   height: 80vh
 }
-
+ 
 .float-child-left {
     width: 70%;
     display: inline-block;
@@ -70,21 +70,21 @@ button:hover {
     border-radius: 5px;
     box-shadow: 6px 9px 1px rgba(0, 0, 0, 0.1)
 }  
-
+ 
 .float-child-right {
   width: 25%;
   height: 76vh;
   right: 0;
   position: absolute
 }  
-
+ 
 .center {
     text-align: center;
     position: relative;
 }
-
+ 
 /* ======== for webcam streams ======== */
-
+ 
 #video-grid
 {
   display: grid;
@@ -94,14 +94,14 @@ button:hover {
   position: absolute;
   margin-left: 27px;
 }
-
+ 
 video
 {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-
+ 
 /* ======== for whiteboard ======== */ 
 .whiteboard
 {
@@ -115,96 +115,93 @@ video
   background-color: white;
   box-shadow: inset 5px 5px 10px black;
 }
-
+ 
 .colors { position: fixed; }
-
+ 
 .color {
   display: inline-block;
   height: 20px;
   width: 48px;
 }
-
+ 
 .color.black { background-color: black; }
 .color.red { background-color: red; }
 .color.green { background-color: green; }
 .color.blue { background-color: blue; }
 .color.yellow { background-color: yellow; }
-
+ 
 /* ======== for chat ======== */
 ul {
   list-style: none;
   word-wrap: break-word;
-  font-family: 'Times' !important;
 }
-
+ 
 /* Pages */
-
+ 
 .pages {
   height: 100%;
   margin: 0;
   padding: 0;
   width: 100%;
 }
-
+ 
 .page {
   height: 100%;
   position: relative;
   width: 100%;
 }
-
+ 
 /* Chat page */
-
+ 
 .chat.page {
-  display: none;
   background-color: #282c34;
 }
-
+ 
 /* Font */
-
+ 
 .messages {
   font-size: 150%;
 }
-
+ 
 .inputMessage {
   font-size: 100%;
 }
-
+ 
 .log {
   color: gray;
   font-size: 70%;
   margin: 5px;
-  text-align: left;
+  text-align: center;
 }
-
+ 
 /* Messages */
-
+ 
 .chatArea {
-  height: 85%;
-  /* padding-bottom: 60px; */
+  height: 100%;
+  /*padding-bottom: 60px;*/
 }
-
+ 
 .messages {
   height: 100%;
   margin: 0;
   overflow-y: scroll;
   padding: 10px 20px 10px 20px;
 }
-
+ 
 .message.typing .messageBody {
   color: gray;
 }
-
+ 
 .username {
   font-weight: 700;
   overflow: hidden;
   padding-right: 15px;
   text-align: right;
 }
-
+ 
 /* Input */
-
+ 
 .inputMessage {
-  border: 3px solid #000;
   bottom: 0;
   height: 60px;
   left: 0;
