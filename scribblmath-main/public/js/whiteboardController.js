@@ -20,6 +20,8 @@
     canvas.addEventListener('touchend', onMouseUp, false);
     canvas.addEventListener('touchcancel', onMouseUp, false);
     canvas.addEventListener('touchmove', throttle(onMouseMove, 10), false);
+
+    document.querySelector('#eraseWhiteboardButton').onclick = () => { context.clearRect(0, 0, canvas.width, canvas.height); }
   
     for (var i = 0; i < colors.length; i++) { colors[i].addEventListener('click', onColorUpdate, false); }
   
@@ -96,8 +98,5 @@
     function onResize() {
       canvas.width = canvas.parentElement.offsetWidth;
       canvas.height = canvas.parentElement.offsetHeight;
-    }
-
-    function clearWhiteboard() { context.clearRect(0, 0, canvas.width, canvas.height); }
-  
-  })();
+    }  
+})();

@@ -7,13 +7,14 @@ const myPeer = new Peer(undefined, {                    // <-- IF STREAMS ARE NO
   //host: '/',
   //port: '3001'
 })
+let myVideoStream;
 const myVideo = document.createElement('video')
-myVideo.muted = true
 const peers = {}
 navigator.mediaDevices.getUserMedia({
   video: true,
   audio: true
 }).then(stream => {
+  myVideoStream = stream;
   addVideoStream(myVideo, stream)
 
   myPeer.on('call', call => {
@@ -24,11 +25,25 @@ navigator.mediaDevices.getUserMedia({
       console.log("video stream created");
       addVideoStream(video, userVideoStream)
     })
-  })
+  });
 
   socket.on('user-connected', userId => {
     connectToNewUser(userId, stream)
   })
+
+  setInterval(() => 
+  {
+    let vidStatus = document.querySelector('#vidToggle').getAttribute('data-status');
+    let micStatus = document.querySelector('#micToggle').getAttribute('data-status');
+    //let volStatus = document.querySelector('#volToggle').getAttribute('data-status');
+
+    if (stream)
+    {
+      stream.getVideoTracks()[0].enabled = vidStatus === 'true' ? true : false;
+      stream.getAudioTracks()[0].enabled = micStatus === 'true' ? true : false;
+      console.log(stream.getVideoTracks()[0].enabled, stream.getAudioTracks()[0].enabled);
+    }
+  }, 1000);
 })
 
 socket.on('user-disconnected', userId => {
