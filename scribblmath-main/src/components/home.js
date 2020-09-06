@@ -28,7 +28,11 @@ render: function () {
           <div className = "create-account-option">Not a member? <Link to = "/signup" style={{ color: "blue"}}>Create an account</Link> </div>
           <br></br>
 
-          <ScrollLink to="Description-section" spy={true} smooth={true} offset={-70} duration={500}><FontAwesomeIcon className="arrow-scroll" icon={faSortDown}/></ScrollLink>
+          <div>
+            <small className="scroll">
+            <ScrollLink to="Description-section" spy={true} smooth={true} offset={-70} duration={500}>About ScribblMath <FontAwesomeIcon className="arrow-scroll scroll" icon={faSortDown}/></ScrollLink>
+            </small>
+          </div>
         </header>
 
 
@@ -37,11 +41,29 @@ render: function () {
           <div>
             <img src={ourGoalPhoto} alt="ourGoalPhoto" id="Description-image"></img>
             <div id = "Description-text">
-              Being in a worldwide pandemic, teaching has certainly become a struggle for both students and teachers.
-              Inspired from the lack of math functionality on most voice call software, we created an app focused on 
-              accomodating students and teachers for their math needs. ScribblMath is voice calling software that 
-              implements a video log, virtual drawing board, and a chat box that supports math type setting (Latex).
-               
+              <p>
+              Being in a worldwide pandemic, teaching mathematics has certainly become a struggle for both students and teachers.
+              We have all been in that one Zoom call where your math teacher is trying to explain some sort of concept, and due to
+              the lack of tools available, it simply isn't a good time for anyone.
+              </p>
+
+              <p>
+              Inspired from the lack of math functionality on most video chat platforms, our team created a web application 
+              focused on accomodating students and teachers alike for their math needs. ScribblMath is a video chatting platform that 
+              implements the staples of video chat like webcams and a chat, but also adds elements that are crucial to conveying 
+              complex mathematics in an easy way. 
+              </p>
+
+              <p>
+              These primarily include a virtual drawing board as well as LaTeX math typesetting support in the chat box! 
+              This means that your teacher will no longer have to spend hours trying to type out the correct 
+              math equation or attempt to draw the ten symbols that each of the equations has that you learned that day. It will look 
+              just like the way it does in your textbook!!
+              </p>
+
+              <p>
+              So, what are you waiting for? Get on ScribblMath NOW!!!! Your math exams will thank you :)
+              </p>
             </div>
           </div>
         </section>
