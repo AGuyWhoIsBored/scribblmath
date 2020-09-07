@@ -1,22 +1,22 @@
 {
-  "name": "covidhacks2020",
+  "name": "scribblmath",
   "version": "1.0.0",
-  "description": "This is our (Duncan Applegarth, Justin Chang) submission for COVID Hacks 2020!",
+  "description": "This is SCRIBBLMATH, which allows complex math to be conveyed easily in a virtual setting!",
   "main": "app.js",
   "scripts": {
     "devStart": "nodemon app.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AGuyWhoIsBored/covidhacks2020.git"
+    "url": "git+https://github.com/AGuyWhoIsBored/scribblmath.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Duncan Applegarth, Justin Chang",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/AGuyWhoIsBored/covidhacks2020/issues"
+    "url": "https://github.com/AGuyWhoIsBored/scribblmath/issues"
   },
-  "homepage": "https://github.com/AGuyWhoIsBored/covidhacks2020#readme",
+  "homepage": "https://github.com/AGuyWhoIsBored/scribblmath#readme",
   "dependencies": {
     "argon2": "^0.27.0",
     "body-parser": "^1.19.0",

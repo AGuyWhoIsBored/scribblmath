@@ -1,5 +1,5 @@
 // this is the main backend for SCRIBBL MATH
-console.log("Starting SCRIBBL MATH backend");
+console.log("Starting SCRIBBLMATH backend");
 
 // load env vars
 require('dotenv').config();
@@ -29,7 +29,7 @@ console.log("Passport auth engine initialized");
 // configure express
 app.enable('trust proxy');
 app.set('view-engine', 'ejs');
-app.use(express.static(__dirname + '/scribblmath-main/build')); // using react static
+app.use(express.static(__dirname + '/client/build')); // using react static
 app.use(bodyParser.json({ limit: '1mb' }));
 app.use(bodyParser.urlencoded({ limit: '1mb', extended: false }));
 app.use(flash());
@@ -59,13 +59,13 @@ var connectedUsers = [];
 // only have GET routes for two different CRA instances!
 // using only one CRA w/ route handler on frontend and prerendering
 // override router on login-protected pages to handle appropriately
-app.get('/main', checkAuthenticated, (req, res) => res.sendFile(__dirname + '/scribblmath-main/build/index.html'));
-app.get('/signup', checkNotAuthenticated, (req, res) => res.sendFile(__dirname + '/scribblmath-main/build/index.html'));
+app.get('/main', checkAuthenticated, (req, res) => res.sendFile(__dirname + '/client/build/index.html'));
+app.get('/signup', checkNotAuthenticated, (req, res) => res.sendFile(__dirname + '/client/build/index.html'));
 
 app.get('/getuserinfo', checkAuthenticated, (req, res) => res.json({ username: req.user.username, email: req.user.email, data: req.user.data }));
 
 // MUST BE LAST!!
-app.get('/*', (req, res) => res.sendFile(__dirname + '/scribblmath-main/build/index.html'));
+app.get('/*', (req, res) => res.sendFile(__dirname + '/client/build/index.html'));
 
 /* POST ROUTES */
 

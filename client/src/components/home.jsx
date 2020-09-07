@@ -1,16 +1,17 @@
 import React from 'react';
-import createClass from 'create-react-class';
 import { Link } from 'react-router-dom';
 import { Link as ScrollLink } from 'react-scroll';
-import './home.css';
-import ourGoalPhoto from '.././assets/ourGoalPhoto.jpeg'
+import '../css/home.css';
+import ourGoalPhoto from '../assets/ourGoalPhoto.jpeg'
 
 // get our fontawesome imports
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPencilRuler, faSortDown } from '@fortawesome/free-solid-svg-icons'
 
-var home = createClass ({
-render: function () {
+export default class Home extends React.Component
+{
+  render()
+  {
     return (
       <div className="App">
         <header className="App-header">  
@@ -70,6 +71,4 @@ render: function () {
       </div>
     );
   }
-});
-
-export default home;
+} 

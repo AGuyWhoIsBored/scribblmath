@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter} from 'react-router-dom';
-import './index.css';
+import { BrowserRouter } from 'react-router-dom';
+import './css/index.css';
 import App from './App';
 
 // main mounting point of react app

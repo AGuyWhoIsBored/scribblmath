@@ -1,14 +1,15 @@
 import React from 'react';
-import createClass from 'create-react-class';
 import {Link} from 'react-router-dom';
-import './createacc.css';
+import '../css/createacc.css';
 
 // get our fontawesome imports
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
-var createacc = createClass ({
-  render: function () {
+export default class CreateAcc extends React.Component
+{
+  render() 
+  {
     return (
       <div className = "signup-header">
         <form action="/signup" method="POST">
@@ -37,6 +38,4 @@ var createacc = createClass ({
       </div>
     );
   }
-});
-
-export default createacc;
+}
