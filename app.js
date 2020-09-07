@@ -27,6 +27,7 @@ passportConfig.init(passport, db.getUserByEmail, db.getUserById);
 console.log("Passport auth engine initialized");
 
 // configure express
+app.enable('trust proxy');
 app.set('view-engine', 'ejs');
 app.use(express.static(__dirname + '/scribblmath-main/build')); // using react static
 app.use(bodyParser.json({ limit: '1mb' }));
@@ -214,5 +215,5 @@ io.on('connection', (socket) =>
     });
 });
 
-console.log("Backend server listening on port 3000");
-http.listen(3000);
+console.log("Backend server listening on port " + 3000||process.env.PORT);
+http.listen(3000||process.env.PORT);

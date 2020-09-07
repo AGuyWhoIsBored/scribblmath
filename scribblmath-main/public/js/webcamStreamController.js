@@ -8,8 +8,9 @@ const myPeer = new Peer(undefined, {                    // <-- IF STREAMS ARE NO
   //port: '3001'
 })
 let myVideoStream;
-const myVideo = document.createElement('video')
-const peers = {}
+const myVideo = document.createElement('video');
+myVideo.muted = true;
+const peers = {};
 navigator.mediaDevices.getUserMedia({
   video: true,
   audio: true
