@@ -1,6 +1,10 @@
 // code that will manage frontend chat
 // adapted from https://github.com/socketio/socket.io/blob/master/examples/chat/public/main.js
 
+// mathjax client-side:
+// https://github.com/mathjax/MathJax-demos-web
+// http://docs.mathjax.org/en/latest/advanced/typeset.html#typeset-math
+
 $(function() 
 {
     var FADE_TIME = 150; // ms
@@ -59,39 +63,8 @@ $(function()
     const sendMessage = async () => 
     {
         var message = $inputMessage.val();
-        
-        if (message.includes('CreateNiceMath '))
-        {
-            console.log("typesetting message");
-            message = message.replace("CreateNiceMath ", "");
-            
-            fetch('/nicemath', 
-            {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ inputMath: message })
-            })
-            .then(data => data.json())
-            .then(data => { /*console.log(data);*/ sendMsgPart2(data.mml) }); // <-- chrome doesn't support MML for some reason, so fix later!
-        }
-        
-        else if (message.includes('CreateNiceMath2 '))
-        {
-            console.log("typesetting message client-side");
-            message = message.replace("CreateNiceMath2 ", "");
-            //message = cleanInput(message);
-            sendMsgPart2(`<p>${message}</p>`);
-        }
-        
-        else
-        {
-            message = cleanInput(message);
-            sendMsgPart2(message);
-        }
-    };
+        message = cleanInput(message);
 
-    const sendMsgPart2 = message =>
-    {
         // if there is a non-empty message and a socket connection
         if (message && connected) 
         {
@@ -104,6 +77,7 @@ $(function()
             
             // tell server to execute 'new message' and send along one parameter
             socket.emit('new message', message);
+            updateTypesetMath(message);
         }
     };
   
@@ -129,8 +103,8 @@ $(function()
         var $usernameDiv = $('<span class="username"/>')
             .text(data.username)
             .css('color', getUsernameColor(data.username));
-        var $messageBodyDiv = $('<span class="messageBody">')
-            .html(data.message); // <-- message is cleaned beforehand if entered thru textbox, so this will only turn into HTML thru MathJax!
+        var $messageBodyDiv = $('<span class="messageBody" style="font-family: serif;">')
+            .html(data.message);
             
         var typingClass = data.typing ? 'typing' : '';
         var $messageDiv = $('<li class="message"/>')
@@ -280,7 +254,7 @@ $(function()
     });
   
     // Whenever the server emits 'new message', update the chat body
-    socket.on('new message', (data) => { addChatMessage(data); });
+    socket.on('new message', (data) => { addChatMessage(data); updateTypesetMath(data.message); }); // on clients receiving messages
   
     // Whenever the server emits 'user joined', log it in the chat body
     socket.on('user joined', (data) => 
@@ -324,4 +298,8 @@ $(function()
         console.log("activeUserUpdate", users);
     });
 
+    function updateTypesetMath(message)
+    {
+        if ((message.match(/\$/g) || []).length > 1) { MathJax.typeset(); }
+    }
 });

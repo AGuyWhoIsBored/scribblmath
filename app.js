@@ -17,7 +17,6 @@ const passport = require('passport');
 const flash = require('express-flash');
 const session = require('express-session');
 const bodyParser = require('body-parser');
-const mjAPI = require('mathjax-node');
 
 // internal imports
 const db = require('./js/dbController');
@@ -45,12 +44,6 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// configure MathJax
-mjAPI.config({
-    fontUrl: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS'
-});
-mjAPI.start();
-
 // server-wide data
 var numUsers = 0;
 var connectedUsers = [];
@@ -75,19 +68,6 @@ app.get('/getuserinfo', checkAuthenticated, (req, res) => res.json({ username: r
 app.get('/*', (req, res) => res.sendFile(__dirname + '/client/build/index.html'));
 
 /* POST ROUTES */
-
-// https://github.com/mathjax/MathJax-demos-web
-app.post('/nicemath', async (req, res) => 
-{
-    mjAPI.typeset({
-        math: req.body.inputMath,
-        format: 'TeX',
-        mml: true
-    }, function(data) {
-        if (!data.errors) { res.json(data); }
-        else { console.log("data for mathjax typesetting has some errors"); console.log(data.errors); }
-    })
-});
 
 app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
     successRedirect: '/main',
