@@ -9,6 +9,7 @@ console.log("^^ if you see the correct host above, env vars are loaded ^^");
 // external package imports
 const express = require('express');
 const app = express();
+const { ExpressPeerServer } = require('peer');
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const argon2 = require('argon2');
@@ -53,6 +54,12 @@ mjAPI.start();
 // server-wide data
 var numUsers = 0;
 var connectedUsers = [];
+
+console.log("Backend server listening on port " + 3000||process.env.PORT);
+const server = http.listen(3000||process.env.PORT);
+
+app.use('/peerjs', ExpressPeerServer(server, { path: '/', proxied: true }));
+console.log("Peer server established successfully");
 
 /* TOP-LEVEL ROUTES */ 
 
@@ -186,9 +193,9 @@ io.on('connection', (socket) =>
 
     socket.on('disconnect', username => 
     {
-        console.log("disconnected", username);
         if (addedUser)
         {
+            console.log("disconnected", username);   
             --numUsers;
             connectedUsers.splice(connectedUsers.indexOf(username), 1);
 
@@ -196,10 +203,10 @@ io.on('connection', (socket) =>
                 username: socket.username,
                 numUsers: numUsers
             });
-        }
 
-        socket.broadcast.emit('activeUserUpdate', { connectedUsers: connectedUsers });
-        console.log("new active users list", connectedUsers);
+            socket.broadcast.emit('activeUserUpdate', { connectedUsers: connectedUsers });
+            console.log("new active users list", connectedUsers);
+        }
     });
 
     // for webcam stream
@@ -208,12 +215,8 @@ io.on('connection', (socket) =>
         socket.join(roomId);
         socket.to(roomId).broadcast.emit('user-connected', userId);
 
-        socket.on('disconnect', () => 
-        {
-            socket.to(roomId).broadcast.emit('user-disconnected', userId);
-        });
+        socket.on('disconnect', () => { socket.to(roomId).broadcast.emit('user-disconnected', userId); });
     });
 });
 
-console.log("Backend server listening on port " + 3000||process.env.PORT);
-http.listen(3000||process.env.PORT);
+console.log("SCRIBBLMATH backend ready for requests");

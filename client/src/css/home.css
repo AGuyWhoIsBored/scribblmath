@@ -5,7 +5,7 @@
 /* General HTML element styling */
 
 * {
-  font-family: "Open sans";
+  /* font-family: "Open sans"; */
 }
 
 button:hover {

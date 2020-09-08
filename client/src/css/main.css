@@ -4,7 +4,7 @@
  
 /* General HTML element styling */
 * {
-  font-family: "Open sans";
+  /* font-family: "Open sans"; */
   box-sizing: border-box;
 }
  

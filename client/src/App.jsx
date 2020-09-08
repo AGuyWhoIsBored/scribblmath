@@ -6,6 +6,8 @@ import createacc  from './components/createacc';
 import login from './components/login'; 
 import main from './components/main';
 
+import test from './components/test';
+
 function App() {
     return (
       <main>
@@ -13,7 +15,8 @@ function App() {
               <Route path="/" component={home} exact />
               <Route path="/login" component={login} exact />
               <Route path="/signup" component={createacc} exact/>
-              <Route path="/main" component={main} extact/>
+              <Route path="/main" component={main} exact/>
+              <Route path="/test" component={test} exact/>
           </Switch>
       </main>
   )
