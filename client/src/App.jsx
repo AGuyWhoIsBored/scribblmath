@@ -5,8 +5,13 @@ import home from './components/home';
 import createacc  from './components/createacc';
 import login from './components/login'; 
 import main from './components/main';
-
 import test from './components/test';
+
+function NoMatchPage ()  {
+    return (
+      <h3>404 - Not found</h3>
+    );
+  };
 
 function App() {
     return (
@@ -17,6 +22,7 @@ function App() {
               <Route path="/signup" component={createacc} exact/>
               <Route path="/main" component={main} exact/>
               <Route path="/test" component={test} exact/>
+              <Route component={NoMatchPage}/>
           </Switch>
       </main>
   )
