@@ -6,6 +6,12 @@ import createacc  from './components/createacc';
 import login from './components/login'; 
 import main from './components/main';
 
+function NoMatchPage ()  {
+    return (
+      <h3>404 - Not found</h3>
+    );
+  };
+
 function App() {
     return (
       <main>
@@ -14,6 +20,7 @@ function App() {
               <Route path="/login" component={login} exact />
               <Route path="/signup" component={createacc} exact/>
               <Route path="/main" component={main} extact/>
+              <Route component={NoMatchPage}/>
           </Switch>
       </main>
   )
