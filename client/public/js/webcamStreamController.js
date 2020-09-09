@@ -9,7 +9,6 @@ const myPeer = new Peer(undefined, {                    // <-- IF STREAMS ARE NO
     port: location.port|| (location.protocol === 'https' ? 443 : 80),
     path: '/peerjs'                      
 });
-let myVideoStream;
 const myVideo = document.createElement('video');
 myVideo.muted = true;
 const peers = {};
@@ -18,7 +17,6 @@ navigator.mediaDevices.getUserMedia({
     audio: true
 }).then(stream => 
     {
-        myVideoStream = stream;
         addVideoStream(myVideo, stream)
 
         myPeer.on('call', call => 
@@ -33,7 +31,7 @@ navigator.mediaDevices.getUserMedia({
             })
         });
 
-        socket.on('user-connected', userId => { connectToNewUser(userId, stream); });
+        socket.on('user-connected', userId => { console.log("new user connected"); connectToNewUser(userId, stream); });
 
     setInterval(() => 
     {
@@ -48,7 +46,7 @@ navigator.mediaDevices.getUserMedia({
             //console.log(stream.getVideoTracks()[0].enabled, stream.getAudioTracks()[0].enabled);
         }
     }, 250);
-});
+}).catch((e) => { console.log("a fatal error occurred while trying to get user media"); });
 
 socket.on('user-disconnected', userId => 
 {
@@ -56,7 +54,7 @@ socket.on('user-disconnected', userId =>
     if (peers[userId]) peers[userId].close()
 });
 
-myPeer.on('open', id => { socket.emit('join-room', ROOM_ID, id); });
+myPeer.on('open', id => { console.log("peerjs received"); socket.emit('join-room', ROOM_ID, id); });
 
 function connectToNewUser(userId, stream) 
 {
