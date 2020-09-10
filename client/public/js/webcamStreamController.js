@@ -7,7 +7,7 @@ const myPeer = new Peer(undefined, {                    // <-- IF STREAMS ARE NO
     host: location.hostname,
     debug: '3',
     port: location.port|| (location.protocol === 'https' ? 443 : 80),
-    path: '/peerjs'                      
+    path: '/peerjs'
 });
 const myVideo = document.createElement('video');
 myVideo.muted = true;

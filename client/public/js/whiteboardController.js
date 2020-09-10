@@ -21,11 +21,13 @@
     canvas.addEventListener('touchcancel', onMouseUp, false);
     canvas.addEventListener('touchmove', throttle(onMouseMove, 10), false);
 
-    document.querySelector('#eraseWhiteboardButton').onclick = () => { context.clearRect(0, 0, canvas.width, canvas.height); }
+    document.querySelector('#eraseWhiteboardButton').onclick = () => { context.clearRect(0, 0, canvas.width, canvas.height); socket.emit('clear board'); }
   
     for (var i = 0; i < colors.length; i++) { colors[i].addEventListener('click', onColorUpdate, false); }
   
+    // socket events
     socket.on('drawing', onDrawingEvent);
+    socket.on('clear board', () => context.clearRect(0, 0, canvas.width, canvas.height)); 
   
     window.addEventListener('resize', onResize, false);
     onResize();

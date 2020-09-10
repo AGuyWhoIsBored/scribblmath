@@ -300,6 +300,7 @@ $(function()
 
     function updateTypesetMath(message)
     {
-        if ((message.match(/\$/g) || []).length > 1) { MathJax.typeset(); }
+        if ((message.match(/\$/g) || []).length > 1
+        ||  (message.includes('\\(') && message.includes('\\)'))) { MathJax.typeset(); }
     }
 });

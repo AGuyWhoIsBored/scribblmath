@@ -123,6 +123,7 @@ io.on('connection', (socket) =>
 {
     // for whiteboard
     socket.on('drawing', (data) => socket.broadcast.emit('drawing', data));
+    socket.on('clear board', () => socket.broadcast.emit('clear board'));
 
     // for chat
     var addedUser = false;

@@ -66,7 +66,7 @@ export default class Main extends React.Component
                             </li>
                         </ul>
                         <div style={{paddingTop: "4em", color: "white"}}>
-                            <small>Start your message with "CreateNiceMath" and the rest of the message will be interpreted as (La)TeX code to generate nice math!</small>
+                            <small>Wrap any (La)TeX math using "$" to have it auto-typeset in the chat and create nice math!</small>
                         </div>
                     </div>
 
