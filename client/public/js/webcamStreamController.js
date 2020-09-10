@@ -12,6 +12,9 @@ const myPeer = new Peer(undefined, {                    // <-- IF STREAMS ARE NO
 const myVideo = document.createElement('video');
 myVideo.muted = true;
 const peers = {};
+
+
+        
 navigator.mediaDevices.getUserMedia({
     video: true,
     audio: true
@@ -76,5 +79,28 @@ function addVideoStream(video, stream)
 {
     video.srcObject = stream
     video.addEventListener('loadedmetadata', () => { video.play(); });
-    videoGrid.append(video)
+    
+    const videoContainer = document.createElement('div');
+
+    //create a textnode for user's username
+    var id;
+    if (user.username)
+        id = document.createTextNode(user.username);
+    else
+        id = document.createTextNode('MEOW')
+
+    //create an HTML element to store username 
+    const userName = document.createElement('div');
+    userName.classList.add("userID");
+    userName.appendChild(id) 
+
+    const userNameContainer = document.createElement('div');
+    userNameContainer.classList.add("userID-container");
+    userNameContainer.appendChild(userName)
+    
+    //Add both video webcam and user name to videocontainer
+    videoContainer.appendChild(video);
+    videoContainer.appendChild(userNameContainer);
+
+    videoGrid.append(videoContainer);
 }

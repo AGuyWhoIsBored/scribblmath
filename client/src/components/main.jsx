@@ -75,7 +75,8 @@ export default class Main extends React.Component
                 </div>
 
                 {/* webcam streams */}
-                <div id="video-grid"></div>  
+                <div id="video-grid">
+                </div>  
             </div>
         )
     }
