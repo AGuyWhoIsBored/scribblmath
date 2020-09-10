@@ -13,7 +13,7 @@ export default class CreateAcc extends React.Component
     return (
       <div className = "signup-header">
         <form action="/signup" method="POST">
-          <div className="form-contents">
+          <div className="form-contents-create">
             <div class = "cancel-icon-positioning-2">
                     <Link to="/">
                       <FontAwesomeIcon icon={faTimes} className = "cancel-icon"></FontAwesomeIcon>

@@ -13,7 +13,7 @@ export default class Login extends React.Component
     return (
       <div className = "login-header">
       <form action="/login" method="POST">
-        <div className="form-contents">
+        <div className="form-contents-login">
           <div className = "cancel-icon-positioning">
             <Link to="/">
               <FontAwesomeIcon icon={faTimes} className = "cancel-icon"></FontAwesomeIcon>
@@ -34,5 +34,9 @@ export default class Login extends React.Component
       </form>
     </div>
     )
+  }
+  componentDidMount() {
+    console.log (window.screen.height);
+    console.log (window.screen.width);
   }
 }

@@ -25,15 +25,41 @@
   }
   
    /* Styling for specific classes inside login form */
-  .form-contents {
+  .form-contents-login {
     background-color: white;
     margin-left: auto;
     margin-right: auto;
-    width: 400px;
-    height: 75vh;
+    width: 30vw;
+    height: 540px;
     margin-top: 40px;
     box-shadow: 0 0 3px 0 rgba(0,0,0,0.3);
   }
+  
+    /*Mobile responsive design*/  
+    @media (max-width: 540px)
+    {
+        .form-contents-login {
+            width: 85vw;
+        }
+    }
+    @media (max-height: 570px)
+    {
+      .form-contents-login {
+        height: 480px;
+      }
+    }
+    /*Tablet responsive designs*/
+    @media (min-height: 1000px) 
+    {
+        @media (max-width: 1025px)
+        {
+          .form-contents-login{
+            width: 70vw;
+          }
+        }
+    }
+
+
 
   .cancel-icon {
     float: right;

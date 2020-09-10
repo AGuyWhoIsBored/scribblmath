@@ -23,13 +23,17 @@ button:hover {
   font-size: 150px;
   color: #61DBFB;
   pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
   }
-}
+  @media (max-width: 460px) {
+    .App-logo{
+        margin-bottom: 40px;
+    }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  }
 
 .App-header {
   background-color: #282c34;
