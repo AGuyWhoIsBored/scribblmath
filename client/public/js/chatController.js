@@ -5,6 +5,9 @@
 // https://github.com/mathjax/MathJax-demos-web
 // http://docs.mathjax.org/en/latest/advanced/typeset.html#typeset-math
 
+// global user variable so that we can tap into all user data
+let user; 
+
 $(function() 
 {
     var FADE_TIME = 150; // ms
@@ -290,7 +293,7 @@ $(function()
     // get username and set accordingly
     fetch('/getuserinfo')
         .then(resp => resp.json())
-        .then(data => { console.log(data); $usernameInput = data.username; setUsername(); });
+        .then(data => { console.log(data); $usernameInput = data.username; user = data; setUsername(); });
 
     // debug
     socket.on('activeUserUpdate', users => 
