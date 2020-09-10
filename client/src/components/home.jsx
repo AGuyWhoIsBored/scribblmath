@@ -65,6 +65,7 @@ export default class Home extends React.Component
               <p>
               So, what are you waiting for? Get on ScribblMath NOW!!!! Your math exams will thank you :)
               </p>
+              <br></br>
             </div>
           </div>
         </section>

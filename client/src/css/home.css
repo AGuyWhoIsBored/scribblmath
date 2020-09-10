@@ -24,11 +24,20 @@ button:hover {
   color: #61DBFB;
   pointer-events: none;
   }
+
+  /*Mobile responsive design*/
   @media (max-width: 460px) {
     .App-logo{
         margin-bottom: 40px;
     }
   }
+
+  @media (min-height: 900px) {
+    .App-logo{
+      height: 23vmin;
+    }
+  }
+
   @media (prefers-reduced-motion: no-preference) {
     .App-logo {
       animation: App-logo-spin infinite 20s linear;
@@ -95,12 +104,29 @@ button:hover {
 #Description-image {
   padding-left: 80px;
   padding-right: 30px;
+  padding-bottom: 80px;
   width: 50%;
   height: auto;
   float: left;
 }
+  @media (max-width: 900px)
+  {
+    #Description-image {
+      width: 70%;
+      padding-left: 0px;
+      padding-right: 0px;
+      padding-bottom: 0px;
+      float: none;
+    }
+  }
 
 #Description-text {
   padding: 0px 80px 40px 40px;
   text-align: left;
-}
+  }
+  @media (max-width: 900px)
+    {
+      #Description-text {
+        padding: 0px 40px 40px 40px;
+      }
+    }
