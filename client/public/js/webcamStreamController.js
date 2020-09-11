@@ -82,7 +82,8 @@ function addVideoStream(video, stream)
     
     const videoContainer = document.createElement('div');
 
-    //create a textnode for user's username
+    //create a textnode for user's username 
+    //when testing the frontend, remove lines 87-90 to display webcam
     var id;
     if (user.username)
         id = document.createTextNode(user.username);

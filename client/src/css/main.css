@@ -26,57 +26,42 @@ button:hover {
     font-size: 60px;
     padding-right: 10px;
     color:  #61DBFB;
-    vertical-align: sub;
     float: left
   }
  
   .main-title {
     color: white;
-    font-size: 40px;
+    font-size: 41px;
     font-family: 'Luckiest Guy';
-    vertical-align: sub;
     float: left;
-    margin-top: 5px;
+    margin-top: 3px;
     margin-left: 5px;
   }
-
-   
-.main-buttons {
-  vertical-align: sub;
-  text-align: right;
-  color: white;
-  margin-top:15px;
-  margin-right: 20px;
-}
-
-.main-button {
-  font-size: 30px;
-  margin-left: 20px;
-  margin-right: 20px;
-  color: #ccc;
-}
-  .main-button:hover {
-    opacity: 0.7;
+    
+  .main-buttons {
+    text-align: right;
+    color: white;
+    margin-top:15px;
+    margin-right: 20px;
   }
+
+  .main-button {
+    font-size: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+    color: #ccc;
+  }
+    .main-button:hover {
+      opacity: 0.7;
+    }
 
   /*Containers used to format whiteboard and chatbox */
-
-  .top-container {
-      width: 100%;
-      height: 500px;
-      border: black solid;
- 
-  }
- 
-  .float-container {
-  height: 80vh
-}
  
 .float-child-left {
-    width: 70%;
+    width: 71vw;
     display: inline-block;
     height: calc(80vh - 165px);
-    left: 27px;
+    left: 2vw;
     position: absolute;
     margin-top: 20px;
     border: 10px solid gray;
@@ -85,10 +70,10 @@ button:hover {
 }  
  
 .float-child-right {
-  width: 25%;
+  width: 25vw;
   height: calc(100vh - 195px);
   right: 0;
-  position: absolute
+  position: absolute;
 }  
  
 .center {
@@ -149,7 +134,17 @@ video
   box-shadow: inset 5px 5px 10px black;
 }
  
-.colors { position: fixed; }
+
+
+.colors-thickness {
+  float: left;
+  height: 40px;
+  width: 100px;
+  border: black solid 1px;
+  background-color: white;
+}
+
+.colors { position: static; display: inline-block }
  
 .color {
   display: inline-block;
@@ -162,6 +157,7 @@ video
 .color.green { background-color: green; }
 .color.blue { background-color: blue; }
 .color.yellow { background-color: yellow; }
+.color.white { background-color: white; }
  
 /* ======== for chat ======== */
 ul {
