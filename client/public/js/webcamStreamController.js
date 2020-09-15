@@ -59,6 +59,9 @@ socket.on('user-disconnected', userId =>
 
 myPeer.on('open', id => { console.log("peerjs received"); socket.emit('join-room', ROOM_ID, id); });
 
+
+
+
 function connectToNewUser(userId, stream) 
 {
     console.log("new user connected to room");
@@ -80,22 +83,22 @@ function addVideoStream(video, stream)
     video.srcObject = stream
     video.addEventListener('loadedmetadata', () => { video.play(); });
     
-    const videoContainer = document.createElement('div');
+    var videoContainer = document.createElement('div');
 
     //create a textnode for user's username 
-    //when testing the frontend, remove lines 87-90 to display webcam
+    //when testing the frontend, remove next 3 lines after 'var id;'
     var id;
     if (user.username)
         id = document.createTextNode(user.username);
     else
-        id = document.createTextNode('MEOW')
+        id = document.createTextNode('MEOW');
 
     //create an HTML element to store username 
-    const userName = document.createElement('div');
+    var userName = document.createElement('div');
     userName.classList.add("userID");
     userName.appendChild(id) 
 
-    const userNameContainer = document.createElement('div');
+    var userNameContainer = document.createElement('div');
     userNameContainer.classList.add("userID-container");
     userNameContainer.appendChild(userName)
     
@@ -104,4 +107,4 @@ function addVideoStream(video, stream)
     videoContainer.appendChild(userNameContainer);
 
     videoGrid.append(videoContainer);
-}
+} 
