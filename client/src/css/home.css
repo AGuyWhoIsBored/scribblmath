@@ -1,13 +1,3 @@
-/*Font Imports*/
-@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-
-/* General HTML element styling */
-
-* {
-  /* font-family: "Open sans"; */
-}
-
 button:hover {
   opacity: 0.7;
 }
@@ -77,7 +67,7 @@ button:hover {
   font-weight: bold;
   font-size: 15px;
   color:white;
-  margin: 20px;
+  margin: 10px;
   padding: 1em 3.5em;
   border-radius: 8px;
   border-color: lightblue;
@@ -130,3 +120,5 @@ button:hover {
         padding: 0px 40px 40px 40px;
       }
     }
+
+  
