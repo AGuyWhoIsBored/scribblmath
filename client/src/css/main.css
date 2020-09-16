@@ -84,11 +84,11 @@
   margin-left: 2vw;
 }
 
-/*Fixes webcam duplication issue when there are more than 1 participant */
+/*Fixes webcam duplication issue when there are more than 1 participant 
   #video-grid > div:nth-child(even)
   {
     display:none !important;
-  }
+  } */
 
 video
 {

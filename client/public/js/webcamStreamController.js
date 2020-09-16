@@ -54,13 +54,13 @@ navigator.mediaDevices.getUserMedia({
 socket.on('user-disconnected', userId => 
 {
     console.log("user disconnected");
-    if (peers[userId]) peers[userId].close()
+    if (peers[userId]) {
+        peers[userId].close()
+        cleanUp(); //remove username tag when user webcam disconnects
+    }
 });
 
 myPeer.on('open', id => { console.log("peerjs received"); socket.emit('join-room', ROOM_ID, id); });
-
-
-
 
 function connectToNewUser(userId, stream) 
 {
@@ -107,4 +107,19 @@ function addVideoStream(video, stream)
     videoContainer.appendChild(userNameContainer);
 
     videoGrid.append(videoContainer);
+    cleanUp(); //Fixes webcam duplication issue when there are more than 1 participant 
 } 
+
+function cleanUp () {
+    var videoContainers = videoGrid.childNodes;
+    var videoContainersCount = videoGrid.childElementCount;
+
+    for (var i = 0; i < videoContainersCount; i++)
+    {
+        if (videoContainers[i].childElementCount < 2)
+        {
+            console.log("Vid-container popppppppeddddd!!!")
+            videoContainers[i].remove();
+        }
+    }
+}
