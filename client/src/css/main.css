@@ -60,6 +60,7 @@
   height: calc(100vh - 195px);
   right: 0;
   position: absolute;
+  z-index: 5;
 }  
  
 .center {
@@ -67,8 +68,8 @@
     position: relative;
 }
 
-/* Triggers UI for mic/sound on or off */
-.toogle-inactive {
+/* Remove from page temporarily*/
+.toggle-inactive {
   display: none;
 }
 /* ======== for webcam streams ======== */
@@ -133,7 +134,44 @@ video
   box-shadow: inset 5px 5px 10px black;
 }
  
+.expand-compress {
+  position: absolute;
+  right: 1vw;
+  top: 2vh;
+  z-index: 10;
+  font-size: 2vw;
+  color: #ccc;
+  
+}
+  .expand-compress:hover{
+    opacity: 0.7;
+  }
 
+
+.expanded-whiteboard{
+  width: 100vw;
+  height: 95vh;
+  position: absolute;
+  z-index: 15;
+  margin-top: -80px;
+  border: 0.5vw solid gray;
+  border-radius: .25vw;
+}
+
+  .animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+  }
+
+  @-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+  }
+    
+  @keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+  }
 
 .colors-thickness {
   float: left;
@@ -242,4 +280,3 @@ ul {
   right: 0;
   width: 100%;
 }
-

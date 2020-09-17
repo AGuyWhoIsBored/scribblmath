@@ -56,7 +56,7 @@ socket.on('user-disconnected', userId =>
     console.log("user disconnected");
     if (peers[userId]) {
         peers[userId].close()
-        cleanUp(); //remove username tag when user webcam disconnects
+        cleanUp(); //remove webcam username tag when user disconnects
     }
 });
 

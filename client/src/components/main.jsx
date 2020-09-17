@@ -3,7 +3,7 @@ import '../css/main.css'
 
 // get our fontawesome imports
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPencilRuler, faMicrophone, faEraser, faMicrophoneSlash, faVideo, faVideoSlash} from '@fortawesome/free-solid-svg-icons'
+import { faPencilRuler, faMicrophone, faEraser, faMicrophoneSlash, faVideo, faVideoSlash, faExpandAlt, faCompressAlt} from '@fortawesome/free-solid-svg-icons'
 
 function IconToggler(props)
 {
@@ -18,6 +18,55 @@ function IconToggler(props)
             status ? <FontAwesomeIcon className={props.className} icon = {props.iconOn}/> :
                      <FontAwesomeIcon className={props.className} icon = {props.iconOff}/>
         } </span>
+    );
+}
+
+function ExpandableWhiteBoard(props)
+{
+    
+    const [normal, expand] = useState(true);
+    const onClick = () => expand(!normal)
+    
+    /*Enlarge or minimize whiteboard*/
+    var whiteboardContainer;
+    var instructions;
+    
+    if (!normal)
+    {
+        //enlarge whiteboard
+        whiteboardContainer = document.querySelector('.float-child-left');
+        whiteboardContainer.classList.remove('float-child-left');
+        whiteboardContainer.classList.add('animate');
+        whiteboardContainer.classList.add('expanded-whiteboard');
+
+        //remove chatbox math typsetting instructions from display
+        instructions = document.getElementById('instruction');
+        instructions.classList.add('toggle-inactive');
+    }
+    else
+    {
+        if (document.querySelector('.expanded-whiteboard'))
+        {
+            //minimize whiteboard
+            whiteboardContainer = document.querySelector('.expanded-whiteboard');
+            whiteboardContainer.classList.add('float-child-left');
+            whiteboardContainer.classList.remove('animate');
+            whiteboardContainer.classList.remove('expanded-whiteboard');
+
+            //add chatbox math typsetting instructions back to display
+            instructions = document.getElementById('instruction');
+            instructions.classList.remove('toggle-inactive'); 
+        }
+    }
+
+    
+    return (
+        <div>
+        {
+            normal ? <FontAwesomeIcon className={props.className} icon={props.iconOff} onClick={onClick}/> :
+                     <FontAwesomeIcon className={props.className} icon={props.iconOn} onClick={onClick}/> 
+        }
+        </div>
     );
 }
 
@@ -44,6 +93,7 @@ export default class Main extends React.Component
 
                     {/* whiteboard */}
                     <div className="float-child-left">
+                        <ExpandableWhiteBoard className="expand-compress" iconOff={faExpandAlt} iconOn={faCompressAlt}></ExpandableWhiteBoard>
                         <canvas className="whiteboard"></canvas>
 
                         <div className="colors">
@@ -67,7 +117,7 @@ export default class Main extends React.Component
                             </li>
                         </ul>
                         <div style={{paddingTop: "4em", color: "white"}}>
-                            <small>Wrap any (La)TeX math using "$" to have it auto-typeset in the chat and create nice math!</small>
+                            <small id="instruction">Wrap any (La)TeX math using "$" to have it auto-typeset in the chat and create nice math!</small>
                         </div>
                     </div>
 
