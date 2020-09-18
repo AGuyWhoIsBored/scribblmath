@@ -3,14 +3,18 @@
 
 (function() 
 {
-    var socket = io();
-    canvas = document.getElementsByClassName('whiteboard')[0];
-    var colors = document.getElementsByClassName('color');
-    var context = canvas.getContext('2d');
+    const socket = io();
+    const canvas = document.getElementsByClassName('whiteboard')[0];
+    const colors = document.getElementsByClassName('color');
+    const context = canvas.getContext('2d');
+
     var current = { color: 'black' };
     var drawing = false;
     var offSetX = canvas.getBoundingClientRect().x;
     var offSetY = canvas.getBoundingClientRect().y;
+    var scaleX = 1; // https://stackoverflow.com/questions/17130395/real-mouse-position-in-canvas 
+    var scaleY = 1; 
+    var fullscreen = false;
   
     canvas.addEventListener('mousedown', onMouseDown, false);
     canvas.addEventListener('mouseup', onMouseUp, false);
@@ -38,6 +42,9 @@
     var instructions;
     //Whiteboard enlarge
     document.querySelector('.expand-compress').onclick = () => {
+
+        fullscreen = !fullscreen;
+
         if (document.querySelector('.float-child-left')){
             //enlarge whiteboard
             whiteboardContainer = document.querySelector('.float-child-left');
@@ -66,6 +73,18 @@
             //add videogrid back onto display
             document.getElementById('video-grid').classList.remove('toggle-inactive'); 
         }
+
+        // recalculate offsets and scale for proper pen tracking AFTER animation is complete
+        setTimeout(() => 
+        {
+            offSetX = canvas.getBoundingClientRect().x;
+            offSetY = canvas.getBoundingClientRect().y;
+            scaleX = canvas.width  / canvas.getBoundingClientRect().width;
+            scaleY = canvas.height / canvas.getBoundingClientRect().height; 
+
+            //console.log("offsets and scale recalculated", offSetX, offSetY, scaleX, scaleY);
+
+        }, fullscreen ? 600 : 1);
     }
 
     function drawLine(x0, y0, x1, y1, color, emit)
@@ -95,8 +114,8 @@
     function onMouseDown(e)
     {
         drawing = true;
-        current.x = (e.clientX||e.touches[0].clientX) - (offSetX);
-        current.y = (e.clientY||e.touches[0].clientY) - (offSetY);
+        current.x = ((e.clientX||e.touches[0].clientX) - offSetX) * scaleX;
+        current.y = ((e.clientY||e.touches[0].clientY) - offSetY) * scaleY;
     }
   
     function onMouseUp(e)
@@ -104,8 +123,8 @@
         if (!drawing) { return; }
         drawing = false;
         drawLine(current.x, current.y, 
-                (e.clientX||e.touches[0].clientX) - (offSetX), 
-                (e.clientY||e.touches[0].clientY) - (offSetY), 
+                ((e.clientX||e.touches[0].clientX) - offSetX) * scaleX, 
+                ((e.clientY||e.touches[0].clientY) - offSetY) * scaleY, 
                 current.color, true);
     }
   
@@ -113,11 +132,11 @@
     {
         if (!drawing) { return; }
         drawLine(current.x, current.y, 
-                (e.clientX||e.touches[0].clientX) - (offSetX), 
-                (e.clientY||e.touches[0].clientY) - (offSetY), 
+                ((e.clientX||e.touches[0].clientX) - offSetX) * scaleX, 
+                ((e.clientY||e.touches[0].clientY) - offSetY) * scaleY, 
                 current.color, true);
-        current.x = (e.clientX||e.touches[0].clientX) - (offSetX);
-        current.y = (e.clientY||e.touches[0].clientY) - (offSetY);
+        current.x = ((e.clientX||e.touches[0].clientX) - offSetX) * scaleX;
+        current.y = ((e.clientY||e.touches[0].clientY) - offSetY) * scaleY;
     }
   
     function onColorUpdate(e) { current.color = e.target.className.split(' ')[1]; }
@@ -148,7 +167,20 @@
     // make the canvas fill its parent
     function onResize() 
     {
+        // save current canvas data
+        var canvasTemp = document.createElement('canvas');
+        var tempContext = canvasTemp.getContext('2d');
+        canvasTemp.width = canvas.width;
+        canvasTemp.height = canvas.height;
+        //tempContext.fillStyle = context.fillStyle;
+        //tempContext.fillRect(0, 0, canvas.width, canvas.height);
+        tempContext.drawImage(canvas, 0, 0);
+
+        // resize canvas
         canvas.width = canvas.parentElement.offsetWidth;
         canvas.height = canvas.parentElement.offsetHeight;
+
+        // load in temp canvas data
+        context.drawImage(canvasTemp, 0, 0);
     }
 })();
