@@ -28,7 +28,7 @@ function ExpandableWhiteBoard(props)
     const onClick = () => expand(!normal)
     
     /*Enlarge or minimize whiteboard*/
-    var whiteboardContainer;
+    /*var whiteboardContainer;
     var instructions;
     
     if (!normal)
@@ -42,6 +42,9 @@ function ExpandableWhiteBoard(props)
         //remove chatbox math typsetting instructions from display
         instructions = document.getElementById('instruction');
         instructions.classList.add('toggle-inactive');
+
+        //remove videogrid from display
+        document.getElementById('video-grid').classList.add('toggle-inactive');
     }
     else
     {
@@ -56,8 +59,11 @@ function ExpandableWhiteBoard(props)
             //add chatbox math typsetting instructions back to display
             instructions = document.getElementById('instruction');
             instructions.classList.remove('toggle-inactive'); 
+
+            //add videogrid back onto display
+            document.getElementById('video-grid').classList.remove('toggle-inactive');
         }
-    }
+    } */
 
     
     return (

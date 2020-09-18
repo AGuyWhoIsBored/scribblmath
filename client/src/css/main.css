@@ -64,13 +64,13 @@
 }  
  
 .center {
-    text-align: center;
-    position: relative;
+  text-align: center;
+  position: relative;
 }
 
 /* Remove from page temporarily*/
 .toggle-inactive {
-  display: none;
+  display: none !important;
 }
 /* ======== for webcam streams ======== */
  
