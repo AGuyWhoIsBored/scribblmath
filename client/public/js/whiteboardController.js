@@ -37,14 +37,15 @@
   
     window.addEventListener('resize', onResize, false);
     onResize();
+    calcOffsetAndScale(); //initial pen to whiteboard calibration
 
-    var whiteboardContainer;
-    var instructions;
-    //Whiteboard enlarge
+    //Whiteboard minimize and maximize display changes
     document.querySelector('.expand-compress').onclick = () => {
 
         fullscreen = !fullscreen;
-
+        
+        var whiteboardContainer;
+        var instructions;
         if (document.querySelector('.float-child-left')){
             //enlarge whiteboard
             whiteboardContainer = document.querySelector('.float-child-left');
@@ -75,16 +76,17 @@
         }
 
         // recalculate offsets and scale for proper pen tracking AFTER animation is complete
-        setTimeout(() => 
-        {
-            offSetX = canvas.getBoundingClientRect().x;
-            offSetY = canvas.getBoundingClientRect().y;
-            scaleX = canvas.width  / canvas.getBoundingClientRect().width;
-            scaleY = canvas.height / canvas.getBoundingClientRect().height; 
+        setTimeout(calcOffsetAndScale, fullscreen ? 600 : 1);
+    }
 
-            //console.log("offsets and scale recalculated", offSetX, offSetY, scaleX, scaleY);
+    function calcOffsetAndScale ()
+    {
+        offSetX = canvas.getBoundingClientRect().x;
+        offSetY = canvas.getBoundingClientRect().y;
+        scaleX = canvas.width  / canvas.getBoundingClientRect().width;
+        scaleY = canvas.height / canvas.getBoundingClientRect().height; 
 
-        }, fullscreen ? 600 : 1);
+        //console.log("offsets and scale recalculated", offSetX, offSetY, scaleX, scaleY);
     }
 
     function drawLine(x0, y0, x1, y1, color, emit)
@@ -179,6 +181,9 @@
         canvas.height = canvas.parentElement.offsetHeight;
 
         // load in temp canvas data
-        context.drawImage(canvasTemp, 0, 0);
+        context.drawImage(canvasTemp, 0, 0, canvas.getBoundingClientRect().width, canvas.getBoundingClientRect().height);
+
+        // calibrate pen to new resized canvas
+        calcOffsetAndScale();
     }
 })();
