@@ -172,8 +172,6 @@
         var tempContext = canvasTemp.getContext('2d');
         canvasTemp.width = canvas.width;
         canvasTemp.height = canvas.height;
-        //tempContext.fillStyle = context.fillStyle;
-        //tempContext.fillRect(0, 0, canvas.width, canvas.height);
         tempContext.drawImage(canvas, 0, 0);
 
         // resize canvas
