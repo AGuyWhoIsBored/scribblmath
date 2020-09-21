@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import '../css/main.css'
+import LatexAutocomplete from './components/latexAutocomplete';
 
-// get our fontawesome imports
+// get our fontawesome imports 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPencilRuler, faMicrophone, faEraser, faMicrophoneSlash, faVideo, faVideoSlash, faExpandAlt, faCompressAlt} from '@fortawesome/free-solid-svg-icons'
 
@@ -18,22 +19,6 @@ function IconToggler(props)
             status ? <FontAwesomeIcon className={props.className} icon = {props.iconOn}/> :
                      <FontAwesomeIcon className={props.className} icon = {props.iconOff}/>
         } </span>
-    );
-}
-
-function ExpandableWhiteBoard(props)
-{
-    
-    const [normal, expand] = useState(true);
-    const onClick = () => expand(!normal)
-        
-    return (
-        <div>
-        {
-            normal ? <FontAwesomeIcon className={props.className} icon={props.iconOff} onClick={onClick}/> :
-                     <FontAwesomeIcon className={props.className} icon={props.iconOn} onClick={onClick}/> 
-        }
-        </div>
     );
 }
 
@@ -60,7 +45,7 @@ export default class Main extends React.Component
 
                     {/* whiteboard */}
                     <div className="float-child-left">
-                        <ExpandableWhiteBoard className="expand-compress" iconOff={faExpandAlt} iconOn={faCompressAlt}></ExpandableWhiteBoard>
+                        <IconToggler className="expand-compress" id="expandToggle" iconOff={faCompressAlt} iconOn={faExpandAlt}></IconToggler>
                         <canvas className="whiteboard"></canvas>
 
                         <div className="colors">
@@ -80,12 +65,15 @@ export default class Main extends React.Component
                                 <div className="chatArea">
                                     <ul className="messages"></ul>
                                 </div>
-                                <input className="inputMessage" placeholder="Type here..."/>
+                                {/*<input className="inputMessage" placeholder="Type here..."/> */}
+                                <LatexAutocomplete
+                                    
+                                />
                             </li>
                         </ul>
                         <div style={{paddingTop: "4em", color: "white"}}>
                             <small id="instruction">Wrap any (La)TeX math using "$" to have it auto-typeset in the chat and create nice math!</small>
-                        </div>
+                                </div>
                     </div>
 
                     <div style={{height: "100%", position: "relative"}}></div>    

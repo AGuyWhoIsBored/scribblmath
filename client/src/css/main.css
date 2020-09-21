@@ -57,7 +57,7 @@
  
 .float-child-right {
   width: 25vw;
-  height: calc(100vh - 195px);
+  height: calc(95vh - 195px );
   right: 0;
   position: absolute;
   z-index: 5;
@@ -279,4 +279,32 @@ ul {
   position: relative;
   right: 0;
   width: 100%;
+}
+
+/* Autocomplete */
+ul.options {
+  display: block;
+  list-style: none;
+  transition: width 0.3s;
+  height: 70px;
+  width: 100%;
+  padding-left: 0;
+  overflow-y: scroll;
+}
+
+ul.options li {
+  display: block;
+  background: white;
+  font-size: 14px;
+  width: 100%;
+}
+ul.options li:hover {
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s all;
+}
+
+ul.options li.option-active {
+  background: whitesmoke;
+  font-size: 18px;
 }

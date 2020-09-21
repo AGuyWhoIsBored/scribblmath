@@ -181,9 +181,9 @@
         canvas.height = canvas.parentElement.offsetHeight;
 
         // load in temp canvas data
-        context.drawImage(canvasTemp, 0, 0, canvas.getBoundingClientRect().width, canvas.getBoundingClientRect().height);
+        context.drawImage(canvasTemp, 0, 0, canvas.width, canvas.height);
 
-        // calibrate pen to new resized canvas
+        // recalibrate pen to new canvas
         calcOffsetAndScale();
     }
 })();
