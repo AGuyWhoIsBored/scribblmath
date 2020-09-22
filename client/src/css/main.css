@@ -308,3 +308,7 @@ ul.options li.option-active {
   background: whitesmoke;
   font-size: 18px;
 }
+
+#Autocomplete-active {
+  display:none;
+}

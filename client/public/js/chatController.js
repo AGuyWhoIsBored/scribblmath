@@ -225,8 +225,9 @@ $(function()
         // When the client hits ENTER on their keyboard
         if (event.which === 13) 
         {
-            if (username) 
+            if (username && !document.querySelector('#Autocomplete-active'))
             {
+                console.log("FAILED")
                 await sendMessage();
                 socket.emit('stop typing');
                 typing = false;

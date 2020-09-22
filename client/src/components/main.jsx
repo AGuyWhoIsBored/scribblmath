@@ -66,8 +66,7 @@ export default class Main extends React.Component
                                     <ul className="messages"></ul>
                                 </div>
                                 {/*<input className="inputMessage" placeholder="Type here..."/> */}
-                                <LatexAutocomplete
-                                    
+                                <LatexAutocomplete wrapper='$'
                                 />
                             </li>
                         </ul>
