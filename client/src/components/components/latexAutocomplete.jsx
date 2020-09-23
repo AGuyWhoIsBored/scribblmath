@@ -103,7 +103,7 @@ export default class Autocomplete extends Component {
       return;
     }
  
-    //Assign the current string in our input box to currentVal
+    //Assign the current string in our input box to currentVal and declare variables
     var currentVal = e.currentTarget.value;
     var userInputTemp;
     var latestKeyCharIndex;
@@ -274,6 +274,11 @@ export default class Autocomplete extends Component {
       if (activeOption === -1) {
         return;
       }
+      
+      //scroll filteredOptions list
+      if (document.querySelector('ul.options li.option-active') )
+          document.querySelector('ul.options li.option-active').scrollIntoView(false);
+
       this.setState({ activeOption: activeOption - 1 });
       if (activeOption - 1 === -1)
         this.setState({showOptions: false})
@@ -284,6 +289,11 @@ export default class Autocomplete extends Component {
         console.log(activeOption);
         return;
       }
+
+      //scroll filteredOptions list
+      if (document.querySelector('ul.options li.option-active') )
+          document.querySelector('ul.options li.option-active').scrollIntoView(true);
+
       this.setState({ activeOption: activeOption + 1 });
     }
     //left arrow key
